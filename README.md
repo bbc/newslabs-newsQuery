@@ -27,7 +27,7 @@ Looking up concepts with "Rooney" in them (free text search for concepts):
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsQuery')(apiKey);
+var newsQuery = require('newsquery')(apiKey);
 newsQuery.getConcepts("Rooney", 5)
 .then(function(concepts) {
     console.log(concepts);
@@ -42,7 +42,7 @@ Note: Will include "Apple Records" (type Record Label) as well as "Apple Compute
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsQuery')(apiKey);
+var newsQuery = require('newsquery')(apiKey);
 newsQuery.getConceptsByType("Apple", ["http://dbpedia.org/ontology/Company"], 5)
 .then(function(response) {
     console.log(concepts);
@@ -54,7 +54,7 @@ Note: Will include non-UK Politicians, as some UK politicians are merely tagged 
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsQuery')(apiKey);
+var newsQuery = require('newsquery')(apiKey);
 newsQuery.getConceptsByType("Cameron", ["http://dbpedia.org/ontology/MemberOfParliament", "http://dbpedia.org/ontology/Politician" ,"http://dbpedia.org/ontology/OfficeHolder"], 5)
 .then(function(people) {
     console.log(response);
@@ -67,7 +67,7 @@ Get articles tagged "Europe":
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsQuery')(apiKey);
+var newsQuery = require('newsquery')(apiKey);
 newsQuery.getArticlesByConcept(["http://dbpedia.org/resource/Europe"], 10)
 .then(function(articles) {
     console.log(articles);

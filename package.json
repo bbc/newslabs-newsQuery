@@ -4,10 +4,10 @@
     "email": "me@iaincollins.com",
     "url": "http://iaincollins.com"
   },
-  "name": "newsQuery",
+  "name": "newsquery",
   "description": "The newsQuery NPM package provides a simple interface to BBC News Labs APIs",
-  "version": "0.1.1",
-  "main": "./lib/newsQuery.js",
+  "version": "0.1.2",
+  "main": "./lib/newsquery.js",
   "keywords": [
     "newsQuery",
     "news",

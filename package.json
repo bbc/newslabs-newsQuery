@@ -1,0 +1,31 @@
+{
+  "author": {
+    "name": "Iain Collins",
+    "email": "me@iaincollins.com",
+    "url": "http://iaincollins.com"
+  },
+  "name": "newsQuery",
+  "description": "Provides convenient access to the BBC News Labs APIs",
+  "version": "0.1.0",
+  "main": "./lib/newsQuery.js",
+  "keywords": [
+    "newsQuery",
+    "news",
+    "bbc",
+    "labs",
+    "semantic",
+    "api"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/iaincollins/newsQuery.git"
+  },
+  "dependencies": {
+    "cheerio": "0.13.1",
+    "q": "1.0.0",
+    "request": "2.33.0"
+  },
+  "engines": {
+    "node": "*"
+  }
+}

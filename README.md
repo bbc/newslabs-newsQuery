@@ -7,7 +7,7 @@ To access these APIs (and so, to use this library) you must have signed up for a
 
 http://bbc.apiportal.apigee.com
 
-Initially this is a very limited implmentation; an MVP that exposes the most useful core functionality, with the intent to extend it over time.
+Initially this is a very limited implementation; an MVP that exposes the most useful core functionality, with the intent to extend it over time.
 
 ## API documentation
 

@@ -14,9 +14,9 @@ http://bbc.apiportal.apigee.com
 
 Registration is free and immediate, you will receive an automated email when you sign up, which contains a link to activate your account. Check your junk mail folder if you can't find it.
 
-1) After registering, create a new application.
-2) Select both the "bbcrd-newslabs-apis-product" and "bbcrd-juicer-apis-product" APIs for your application.
-3) Your API key will be listed as the "Consumer Key" for your application.
+1. After registering, create a new application.
+2. Select both the "bbcrd-newslabs-apis-product" and "bbcrd-juicer-apis-product" APIs for your application.
+3. Your API key will be listed as the "Consumer Key" for your application.
 
 ## Additional documentation
 

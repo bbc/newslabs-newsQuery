@@ -10,7 +10,7 @@ describe('Get related concepts URI using the semantic API', function(){
     var response = { };
     
     beforeEach(function(done){
-        newsquery.getRelatedConcepts("http://dbpedia.org/resource/David_Cameron")
+        newsquery.getRelatedConcepts("http://dbpedia.org/resource/Ukraine")
         .then(function(concept) {
             response = concept;
             done();

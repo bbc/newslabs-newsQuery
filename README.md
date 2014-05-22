@@ -58,24 +58,24 @@ The response from getConcepts() is an array of concepts:
 
 ### getRelatedConcepts()
 
-An example that returns the first 5 concepts matching the term "Rooney":
+For example, to get concepts related to "Ukraine":
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
 var newsQuery = require('newsquery')(apiKey);
-newsQuery.getRelatedConcepts("http://dbpedia.org/resource/Wayne_Rooney", 5)
+newsQuery.getRelatedConcepts("http://dbpedia.org/resource/Ukraine", 5)
 .then(function(concepts) {
     console.log(concepts);
 });
 ```
 
-The response from findConcepts() is an array of concepts:
+The response from findConcepts() is an array of concepts, returned in order of how many co-occurences there are between the concepts.
 
 ``` javascript
-[ { name: 'Mickey Rooney',
-    uri: 'http://dbpedia.org/resource/Mickey_Rooney',
-    typeUri: 'http://dbpedia.org/ontology/Person',
-    image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Mickey_Rooney_still.jpg/200px-Mickey_Rooney_still.jpg' } ]
+[ name: 'Russia',
+    uri: 'http://dbpedia.org/resource/Russia',
+    occurrences: 9530,
+    image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/200px-Flag_of_Russia.svg.png' ]
 ````
 
 ### getArticlesByConcept()

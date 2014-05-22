@@ -7,7 +7,7 @@ describe('Get a concept by URI using the semantic API', function(){
     var response = { };
     
     beforeEach(function(done){
-        // @fixme Adam_Smith (the economist) is not in our list of known concepts! Must investigate why.
+        // @fixme Tried Adam_Smith (the economist) but heis not in our list of known concepts (despite being in dbpedia)
         newsquery.getConcept("http://dbpedia.org/resource/David_Cameron")
         .then(function(concept) {
             response = concept;

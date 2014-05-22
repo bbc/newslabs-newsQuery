@@ -20,7 +20,7 @@ describe('Find concepts by name using the semantic API', function(){
     });
 });
 
-describe('Gracefully fail to find by name using the semantic API', function(){
+describe('Gracefully fail to find concept by name using the semantic API', function(){
     var limit = 5;
     var response = { };
     
@@ -36,3 +36,5 @@ describe('Gracefully fail to find by name using the semantic API', function(){
        assert.equal(0, response.length);
     });
 });
+
+// @todo Test finding concepts by type (e.g. only people, only companies)

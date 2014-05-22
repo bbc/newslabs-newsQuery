@@ -18,12 +18,19 @@ describe('Get articles by concept using the semantic API', function(){
     });
 
     it('Should return 10 matching articles by default', function(){
-        console.log(response[0].mentions['@set'].length);
         assert.equal(10, response.length);
     });
 
-    it('Article should have a subject', function(){
-        assert.equal(typeof(response[0].subject), 'string');
+    it('Article should have an id', function(){
+        assert.equal(typeof(response[0].id), 'string');
+    });
+
+    it('Article should have a source', function(){
+        assert.equal(typeof(response[0].source), 'string');
+    });
+
+    it('Article should have a title', function(){
+        assert.equal(typeof(response[0].title), 'string');
     });
 
     it('Article should have a description', function(){
@@ -31,15 +38,31 @@ describe('Get articles by concept using the semantic API', function(){
     });
 
     it('Article should have a url', function(){
-        assert.equal(typeof(response[0].primaryContentOf), 'string');
+        assert.equal(typeof(response[0].url), 'string');
     });
 
-    it('Article should have a timestamp', function(){
+    it('Article should have a date created timestamp', function(){
         assert.equal(typeof(response[0].dateCreated), 'string');
     });
 
     it('Article should be tagged with at least one useful concept', function(){
-        assert.equal(true, (response[0].mentions['@set'].length > 1));
+        assert.equal(true, (response[0].concepts.length > 1));
+    });
+    
+    it('Concept assoicated with article should have a name', function(){
+        assert.equal(typeof(response[0].concepts[0].name), 'string');
+    });
+
+    it('Concept assoicated with article should have a uri', function(){
+        assert.equal(typeof(response[0].concepts[0].uri), 'string');
+    });
+
+    it('Concept assoicated with article should have a type', function(){
+        assert.equal(typeof(response[0].concepts[0].type), 'string');
+    });
+    
+    it('Concept assoicated with article should have an image', function(){
+        assert.equal(typeof(response[0].concepts[0].image), 'string');
     });
 
 });

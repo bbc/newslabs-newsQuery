@@ -4,7 +4,7 @@ var config = require(__dirname+'/config.json');
 var newsquery = require(__dirname+'/../lib/newsquery')(config.bbcNewsLabs.apiKey);
 
 describe('Get related concepts URI using the semantic API', function(){
-    // @fixme Allowing long for this query as sometimes it's slower
+    // @fixme Allowing long for this query as sometimes it's slow
     // Even allowing for 10 seconds it still often fails if it isn't cached!
     this.timeout(10000);
     var response = { };
@@ -27,6 +27,10 @@ describe('Get related concepts URI using the semantic API', function(){
 
     it('Concept should have a uri', function(){
         assert.equal(typeof(response[0].uri), 'string');
+    });
+    
+    it('Concept should have an image', function(){
+        assert.equal(typeof(response[0].image), 'string');
     });
 
     it('Concept should have a number of occurences as a number', function(){

@@ -8,7 +8,7 @@ describe('Find concepts by name using the semantic API', function(){
     var response = { };
     
     beforeEach(function(done){
-        newsquery.findConcepts("Smith", limit)
+        newsquery.getConcepts("Smith", limit)
         .then(function(concepts) {
             response = concepts;
             done();
@@ -18,6 +18,19 @@ describe('Find concepts by name using the semantic API', function(){
     it('Should return the expected number of results', function(){
        assert.equal(limit, response.length);
     });
+    
+    it('Concept should have a name', function(){
+        assert.equal(typeof(response[0].name), 'string');
+    });
+
+    it('Concept should have a uri', function(){
+        assert.equal(typeof(response[0].uri), 'string');
+    });
+    
+    it('Concept should have an image', function(){
+        assert.equal(typeof(response[0].image), 'string');
+    });
+    
 });
 
 describe('Gracefully fail to find concept by name using the semantic API', function(){
@@ -25,7 +38,7 @@ describe('Gracefully fail to find concept by name using the semantic API', funct
     var response = { };
     
     beforeEach(function(done){
-        newsquery.findConcepts("ABCDEFABCDEF12345678901234567890", limit)
+        newsquery.getConcepts("ABCDEFABCDEF12345678901234567890", limit)
         .then(function(concepts) {
             response = concepts;
             done();

@@ -1,7 +1,11 @@
 newsQuery
 =========
 
-The newsQuery module provides easy to consume access to the BBC News Labs APIs.
+The newsQuery module provides easy-to-consume access to the BBC News Labs APIs.
+
+The APIs let you query a database of 40+ news sources, including content from the BBC but also other publications including The Guardian, The Mirror, The Huffington Post and others.
+
+The majority of our content is articles but we also have images, video and tweets from a select range of sources.
 
 The BBC News Labs API's are experimental and are cheifly intended for use by R&D teams in news orgs and in universities. If you'd like to more more or have any feedback about them, you can get in touch with @BBC_News_Labs on Twitter.
 
@@ -32,6 +36,10 @@ http://newshack.co.uk/newshack-ii/juicer-apis/
 
 ### getConcepts()
 
+You need to get a definative URI for a concept before you can search for articles that mention it.
+
+A concept is typically a person, place, organisation or theme (e.g. "law", "economics"). These correspond to entries in dbpedia, which uses an ontology derived from data in Wikipedia.
+
 An example that returns the first 5 concepts matching the term "Rooney":
 
 ``` javascript
@@ -43,7 +51,7 @@ newsQuery.getConcepts("Rooney", 5)
 });
 ```
 
-The response from getConcepts() is an array of concepts:
+The response from getConcepts() is an array of concepts, each with a unique URI (and possibly an image):
 
 ``` javascript
 [ { name: 'Wayne Rooney',
@@ -58,7 +66,7 @@ The response from getConcepts() is an array of concepts:
 
 ### getRelatedConcepts()
 
-For example, to get concepts related to "Ukraine":
+To get concepts related to "Ukraine":
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
@@ -71,11 +79,15 @@ newsQuery.getRelatedConcepts("http://dbpedia.org/resource/Ukraine", 5)
 
 The response from findConcepts() is an array of concepts, returned in order of how many co-occurences there are between the concepts.
 
+i.e. how much times both concepts have been mentioned in the same article, tagged in one image, mentioned in a video, etc.
+
 ``` javascript
-[ name: 'Russia',
+[ { name: 'Russia',
     uri: 'http://dbpedia.org/resource/Russia',
     occurrences: 9530,
-    image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/200px-Flag_of_Russia.svg.png' ]
+    image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/200px-Flag_of_Russia.svg.png' 
+  }
+]
 ````
 
 ### getArticlesByConcept()

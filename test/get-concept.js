@@ -15,8 +15,8 @@ describe('Get a concept by URI using the semantic API', function(){
         });
     });
     
-    it('Should return the correct concept', function(){
-        assert.equal("David Cameron", response.label);
+    it('Should return the correct name for the concept', function(){
+        assert.equal("David Cameron", response.name);
     });
     
     it('Should return a description', function(){
@@ -27,7 +27,7 @@ describe('Get a concept by URI using the semantic API', function(){
         assert.equal(10, response.articles.length);
     });
     
-    it('Should return multiple values for the type for this test object', function(){
+    it('Should return multiple values for the type for this test', function(){
         assert.equal(true, (response.type.length > 1));
     });
 

@@ -86,7 +86,7 @@ For example, you can check the "type" field to see if it's categorized as a Pers
 ``` javascript
 var apiKey = '1234567890ABCDEF';
 var newsQuery = require('newsquery')(apiKey);
-newsQuery.getConcept(http://dbpedia.org/resource/David_Cameron, 1)
+newsQuery.getConcept("http://dbpedia.org/resource/David_Cameron", 1)
 .then(function(concept) {
     console.log(concept);
 });

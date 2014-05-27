@@ -10,7 +10,7 @@ describe('Get related concepts URI using the semantic API', function(){
     var response = { };
     
     beforeEach(function(done){
-        newsquery.getRelatedConcepts("http://dbpedia.org/resource/Ukraine")
+        newsquery.getCoOccuringConcepts("http://dbpedia.org/resource/Ukraine")
         .then(function(concept) {
             response = concept;
             done();
@@ -33,7 +33,7 @@ describe('Get related concepts URI using the semantic API', function(){
         assert.equal(typeof(response[0].image), 'string');
     });
 
-    it('Concept should have a number of occurences as a number', function(){
+    it('Concept should have a number of occurrences as a number', function(){
         assert.equal(typeof(response[0].occurrences), 'number');
     });
 

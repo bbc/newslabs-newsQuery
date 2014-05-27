@@ -23,10 +23,14 @@ describe('Get a concept by URI using the semantic API', function(){
         assert.equal(typeof(response.description), 'string');
     });
 
-    it('Should return 10 related articls by default', function(){
+    it('Should return 10 related articles by default', function(){
         assert.equal(10, response.articles.length);
     });
-    
+
+    it('The type value should be an array', function(){
+        assert.equal((response.type instanceof Array), true);
+    });
+        
     it('Should return multiple values for the type for this test', function(){
         assert.equal(true, (response.type.length > 1));
     });

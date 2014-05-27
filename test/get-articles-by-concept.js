@@ -49,19 +49,23 @@ describe('Get articles by concept using the semantic API', function(){
         assert.equal(true, (response[0].concepts.length > 1));
     });
     
-    it('Concept assoicated with article should have a name', function(){
+    it('Concept associated with article should have a name', function(){
         assert.equal(typeof(response[0].concepts[0].name), 'string');
     });
 
-    it('Concept assoicated with article should have a uri', function(){
+    it('Concept associated with article should have a uri', function(){
         assert.equal(typeof(response[0].concepts[0].uri), 'string');
     });
 
-    it('Concept assoicated with article should have a type', function(){
-        assert.equal(typeof(response[0].concepts[0].type), 'string');
+    it('The type for concepts on an Article should be an array', function(){
+        assert.equal((response[0].concepts[0].type instanceof Array), true);
     });
     
-    it('Concept assoicated with article should have an image', function(){
+    it('Article should have at least one concept associated with it', function(){
+        assert.equal((response[0].concepts[0].type.length > 0), true);
+    });
+    
+    it('Concept associated with article should have an image', function(){
         assert.equal(typeof(response[0].concepts[0].image), 'string');
     });
 

@@ -27,6 +27,10 @@ describe('Find concepts by name using the semantic API', function(){
         assert.equal(typeof(response[0].uri), 'string');
     });
     
+    it('The type value should be an array', function(){
+        assert.equal((response[0].type instanceof Array), true);
+    });
+
     it('Concept should have an image', function(){
         assert.equal(typeof(response[0].image), 'string');
     });

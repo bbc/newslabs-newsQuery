@@ -79,9 +79,11 @@ NB: 'Agent', which is as the last type for both, is simply a top level ontology 
 
 ### getConcept()
 
-If you have the definative URI for a concept you can use it's URI to request additional information about it.
+If you have the definative URI for a concept you can use it's URI to request detailed information about a concept, such as it's 
 
 For example, you can check the "type" field to see if it's categorized as a Person, Place, Organisation, etc (you can also check for more specific types, like SoccerPlayer or Company).
+
+Note that calling getConcept() explicitly on a URI may return more specific type information than is returned along with a concept in other calls, such as getArticlesByConcept().
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
@@ -112,20 +114,20 @@ The response is a single object, with a description of it
   uri: 'http://dbpedia.org/resource/David_Cameron' }
 ```
 
-### getRelatedConcepts()
+### getCoOccuringConcepts()
 
 You can fetch concepts that - by being linked through news articles - are linked to a given concept. For example, to get concepts related to "Ukraine":
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
 var newsQuery = require('newsquery')(apiKey);
-newsQuery.getRelatedConcepts("http://dbpedia.org/resource/Ukraine", 5)
+newsQuery.getCoOccuringConcepts("http://dbpedia.org/resource/Ukraine", 5)
 .then(function(concepts) {
     console.log(concepts);
 });
 ```
 
-The response from findConcepts() is an array of concepts, returned in order of how many co-occurences there are between the concepts.
+The response from getCoOccuringConcepts() is an array of concepts, returned in order of how many co-occurences there are between the concepts.
 
 i.e. how much times both concepts have been mentioned in the same article, tagged in one image, mentioned in a video, etc.
 
@@ -151,91 +153,133 @@ newsQuery.getArticlesByConcept(["http://dbpedia.org/resource/David_Cameron"], 5)
 });
 ```
 
-Example response from getArticlesByConcept():
+Example response from getArticlesByConcept() is shown below.
+
+Note that the response includes quite high level type information for each concept, but it does return the latitude and longitude values for concepts that are identified as places.
+
+This is an example of slightly inconsistent behaviour between function calls - as lat/lon values are not returned for Places by a other calls - but is something being looked at to see if we can improve.
 
 ``` javascript
-[ { id: 'the_mirror_ee58bebcd283cea0f654207ea051b8b2027263dd',
-  source: 'http://www.bbc.co.uk/ontologies/bbc/TheMirror',
-  url: 'http://www.mirror.co.uk/news/uk-news/conservatives-liberal-democrats-face-local-3590400',
-  dateCreated: '2014-05-22T19:18:37Z',
-  title: 'Conservatives and Liberal Democrats face local and European election catastrophe',
-  description: 'Labour are battling to stop UKIP pulling off an unprecedented victory in the Euro polls - but are confident of winning the battle for council seats',
-  image: 'http://i4.mirror.co.uk/incoming/article3586292.ece/alternates/s615/David-Cameron-and-his-wife-Samantha.jpg',
-  concepts: 
-   [ { name: 'London',
-       uri: 'http://dbpedia.org/resource/London',
-       type: 'Place',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/83/London_collage.jpg/200px-London_collage.jpg',
-       lat: '51.507222222222225',
-       lon: '-0.1275' },
-     { name: 'Cambridge',
-       uri: 'http://dbpedia.org/resource/Cambridge',
-       type: 'Place',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/KingsCollegeChapelWest.jpg/200px-KingsCollegeChapelWest.jpg',
-       lat: '52.205',
-       lon: '0.119' },
-     { name: 'Brussels',
-       uri: 'http://dbpedia.org/resource/Brussels',
-       type: 'Place',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/TE-Collage_Brussels.png/200px-TE-Collage_Brussels.png',
-       lat: '50.85',
-       lon: '4.35' },
-     { name: 'David Cameron',
-       uri: 'http://dbpedia.org/resource/David_Cameron',
-       type: 'Person',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Official-photo-cameron.png/200px-Official-photo-cameron.png' },
-     { name: 'Liberal Democrats',
-       uri: 'http://dbpedia.org/resource/Liberal_Democrats',
-       type: 'Organisation',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Liberal_Democrats_Logo.svg/200px-Liberal_Democrats_Logo.svg.png' },
-     { name: 'Ed Miliband',
-       uri: 'http://dbpedia.org/resource/Ed_Miliband',
-       type: 'Person',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Ed_Miliband_on_August_27,_2010_cropped-an_less_red-2.jpg/200px-Ed_Miliband_on_August_27,_2010_cropped-an_less_red-2.jpg' },
-     { name: 'Nick Clegg',
-       uri: 'http://dbpedia.org/resource/Nick_Clegg',
-       type: 'Person',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/6/68/NickClegg_worldeconomic.jpg/200px-NickClegg_worldeconomic.jpg' },
-     { name: 'Israeli Labor Party',
-       uri: 'http://dbpedia.org/resource/Israeli_Labor_Party',
-       type: 'Organisation',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Labor_(Israel)_logo.png/200px-Labor_(Israel)_logo.png' },
-     { name: 'Malcolm Bruce',
-       uri: 'http://dbpedia.org/resource/Malcolm_Bruce',
-       type: 'Person',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Malcolm_Bruce,_September_2009_cropped.jpg/200px-Malcolm_Bruce,_September_2009_cropped.jpg' },
-     { name: 'Nigel Farage',
-       uri: 'http://dbpedia.org/resource/Nigel_Farage',
-       type: 'Person',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Nigel_Farage.jpg/200px-Nigel_Farage.jpg' },
-     { name: 'Trafford',
-       uri: 'http://dbpedia.org/resource/Trafford',
-       type: 'Place',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Trafford-town-hall3.jpg/200px-Trafford-town-hall3.jpg',
-       lat: '53.44611111111111',
-       lon: '-2.3080555555555557' },
-     { name: 'UK Independence Party',
-       uri: 'http://dbpedia.org/resource/UK_Independence_Party',
-       type: 'Organisation',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/UKIP_logo.png/200px-UKIP_logo.png' },
-     { name: 'Parliament of the United Kingdom',
-       uri: 'http://dbpedia.org/resource/Parliament_of_the_United_Kingdom',
-       type: 'Organisation',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Crowned_Portcullis.svg/200px-Crowned_Portcullis.svg.png',
-       lat: '51.49930555555556',
-       lon: '-0.12475' },
-     { name: 'Conservative Party (UK)',
-       uri: 'http://dbpedia.org/resource/Conservative_Party_(UK)',
-       type: 'Organisation',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Conservative_logo_2006.svg/200px-Conservative_logo_2006.svg.png' },
-     { name: 'Coalition (Australia)',
-       uri: 'http://dbpedia.org/resource/Coalition_(Australia)',
-       type: 'Organisation',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/LiberalpartyofausCROP.png/200px-LiberalpartyofausCROP.png' },
-     { name: 'Labour Party (UK)',
-       uri: 'http://dbpedia.org/resource/Labour_Party_(UK)',
-       type: 'Organisation',
-       image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Logo_Labour_Party.svg/200px-Logo_Labour_Party.svg.png' } ]
-    }
+[ 
+  { id: 'the_huffington_post_a819bb600f1a3c9d11a2a635e528f972ab241751',
+    source: 'http://www.bbc.co.uk/ontologies/bbc/TheHuffingtonPost',
+    url: 'http://www.huffingtonpost.co.uk/2014/05/27/tony-blair-defends-eu-immigration_n_5396082.html?utm_hp_ref=uk&ir=UK',
+    dateCreated: '2014-05-27T11:49:15Z',
+    title: 'Tony Blair Defends Immigration And EU, Says Ukip \'Do Not Have All The Answers\'',
+    description: 'Tony Blair  has moved to unite the left against Ukip in his strongest attack yet against Nigel Farage and the eurosceptic party.  \n \nThe former prime minister, who is still reviled by many left-wingers over his decision to invade Iraq in 2003, said Ukip did "not have all the answers" and should be exposed for having "no actual solutions to the problems of the 21st century". \n \nBlair, 61, told BBC Radio 4\'s Today programme that blaming immigrants for problems is a "backwards and regressive ste...',
+    image: 'http://i.huffpost.com/gen/1818157/thumbs/o-TONY-BLAIR-570.jpg',
+    concepts: 
+     [ { name: 'Brussels',
+         uri: 'http://dbpedia.org/resource/Brussels',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/TE-Collage_Brussels.png/200px-TE-Collage_Brussels.png',
+         type: [ 'http://dbpedia.org/ontology/Place' ],
+         lat: '50.85',
+         lon: '4.35' },
+       { name: 'David Cameron',
+         uri: 'http://dbpedia.org/resource/David_Cameron',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Official-photo-cameron.png/200px-Official-photo-cameron.png',
+         type: 
+          [ 'http://dbpedia.org/ontology/Person',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Great Britain',
+         uri: 'http://dbpedia.org/resource/Great_Britain',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Satellite_image_of_Great_Britain_and_Northern_Ireland_in_April_2002.jpg/200px-Satellite_image_of_Great_Britain_and_Northern_Ireland_in_April_2002.jpg',
+         type: [ 'http://dbpedia.org/ontology/Place' ],
+         lat: '53.826',
+         lon: '-2.422' },
+       { name: 'BBC Radio 4',
+         uri: 'http://dbpedia.org/resource/BBC_Radio_4',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/5/53/BBC_Radio_4.svg/200px-BBC_Radio_4.svg.png',
+         type: 
+          [ 'http://dbpedia.org/ontology/Organisation',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Ed Miliband',
+         uri: 'http://dbpedia.org/resource/Ed_Miliband',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Ed_Miliband_on_August_27,_2010_cropped-an_less_red-2.jpg/200px-Ed_Miliband_on_August_27,_2010_cropped-an_less_red-2.jpg',
+         type: 
+          [ 'http://dbpedia.org/ontology/Person',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Nick Clegg',
+         uri: 'http://dbpedia.org/resource/Nick_Clegg',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/6/68/NickClegg_worldeconomic.jpg/200px-NickClegg_worldeconomic.jpg',
+         type: 
+          [ 'http://dbpedia.org/ontology/Person',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Alan Milburn',
+         uri: 'http://dbpedia.org/resource/Alan_Milburn',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Alan_Milburn.JPG/200px-Alan_Milburn.JPG',
+         type: 
+          [ 'http://dbpedia.org/ontology/Person',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Israeli Labor Party',
+         uri: 'http://dbpedia.org/resource/Israeli_Labor_Party',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Labor_(Israel)_logo.png/200px-Labor_(Israel)_logo.png',
+         type: 
+          [ 'http://dbpedia.org/ontology/Organisation',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Iraq',
+         uri: 'http://dbpedia.org/resource/Iraq',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Flag_of_Iraq.svg/200px-Flag_of_Iraq.svg.png',
+         type: [ 'http://dbpedia.org/ontology/Place' ],
+         lat: '33.333333333333336',
+         lon: '44.43333333333333' },
+       { name: 'Tony Blair',
+         uri: 'http://dbpedia.org/resource/Tony_Blair',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/WORLD_ECONOMIC_FORUM_ANNUAL_MEETING_2009_-_Tony_Blair.jpg/200px-WORLD_ECONOMIC_FORUM_ANNUAL_MEETING_2009_-_Tony_Blair.jpg',
+         type: 
+          [ 'http://dbpedia.org/ontology/Person',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Nigel Farage',
+         uri: 'http://dbpedia.org/resource/Nigel_Farage',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Nigel_Farage.jpg/200px-Nigel_Farage.jpg',
+         type: 
+          [ 'http://dbpedia.org/ontology/Person',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Diane Abbott',
+         uri: 'http://dbpedia.org/resource/Diane_Abbott',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Diane_Abbott,_New_Statesman_hustings,_trimmed.jpg/200px-Diane_Abbott,_New_Statesman_hustings,_trimmed.jpg',
+         type: 
+          [ 'http://dbpedia.org/ontology/Person',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'UK Independence Party',
+         uri: 'http://dbpedia.org/resource/UK_Independence_Party',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/UKIP_logo.png/200px-UKIP_logo.png',
+         type: 
+          [ 'http://dbpedia.org/ontology/Organisation',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'The Huffington Post',
+         uri: 'http://dbpedia.org/resource/The_Huffington_Post',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Huffington_Post.jpg/200px-Huffington_Post.jpg',
+         type: 
+          [ 'http://dbpedia.org/ontology/Organisation',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Europe',
+         uri: 'http://dbpedia.org/resource/Europe',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Europe_orthographic_Caucasus_Urals_boundary.svg/200px-Europe_orthographic_Caucasus_Urals_boundary.svg.png',
+         type: [ 'http://dbpedia.org/ontology/Place' ] },
+       { name: 'Conservative Party (UK)',
+         uri: 'http://dbpedia.org/resource/Conservative_Party_(UK)',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Conservative_logo_2006.svg/200px-Conservative_logo_2006.svg.png',
+         type: 
+          [ 'http://dbpedia.org/ontology/Organisation',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Labour Party (UK)',
+         uri: 'http://dbpedia.org/resource/Labour_Party_(UK)',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Logo_Labour_Party.svg/200px-Logo_Labour_Party.svg.png',
+         type: 
+          [ 'http://dbpedia.org/ontology/Organisation',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'John Hutton, Baron Hutton of Furness',
+         uri: 'http://dbpedia.org/resource/John_Hutton,_Baron_Hutton_of_Furness',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Msc_2009-Sunday,_11.00_-_12.30_Uhr-Zwez_005_Hutton_detail.jpg/200px-Msc_2009-Sunday,_11.00_-_12.30_Uhr-Zwez_005_Hutton_detail.jpg',
+         type: 
+          [ 'http://dbpedia.org/ontology/Person',
+            'http://dbpedia.org/ontology/Agent' ] },
+       { name: 'Owen Jones (writer)',
+         uri: 'http://dbpedia.org/resource/Owen_Jones_(writer)',
+         image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/OwenJones.jpg/200px-OwenJones.jpg',
+         type: 
+          [ 'http://dbpedia.org/ontology/Person',
+            'http://dbpedia.org/ontology/Agent' ] } ]
+  }
 ]
-````

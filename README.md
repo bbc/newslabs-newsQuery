@@ -291,14 +291,14 @@ You can query how many occurences there are for a given concept between a series
 
 If you don't specify a startDate or an endDate (both should be strings in the form 'YYYY-MM-DD') then the current date will be used for either value.
 
-Tip: If you're looking for a great date handling library, check out moment
+Tip: If you're looking for a great date handling library, check out 'moment'.
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
 var newsQuery = require('newsquery')(apiKey);
 newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Ukraine", "2014-05-24", "2014-05-28")
-.then(function(articles) {
-    console.log(articles);
+.then(function(occurrences) {
+    console.log(occurrences);
 });
 ```
 

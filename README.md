@@ -138,7 +138,7 @@ i.e. how much times both concepts have been mentioned in the same article, tagge
     image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/200px-Flag_of_Russia.svg.png' 
   }
 ]
-````
+```
 
 ### getArticlesByConcept()
 

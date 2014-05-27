@@ -1,0 +1,791 @@
+{
+    "owl:Thing": {
+        "Activity": {
+            "Game": {
+                "BoardGame": {}
+            },
+            "Sport": {
+                "Athletics": {},
+                "Boxing": {
+                    "BoxingCategory": {},
+                    "BoxingStyle": {}
+                },
+                "HorseRiding": {}
+            }
+        },
+        "Agent": {
+            "Deity": {},
+            "Family": {
+                "NobleFamily": {}
+            },
+            "Organisation": {
+                "Band": {},
+                "Broadcaster": {
+                    "BroadcastNetwork": {},
+                    "RadioStation": {},
+                    "TelevisionStation": {}
+                },
+                "ClericalOrder": {},
+                "ComedyGroup": {},
+                "Company": {
+                    "Airline": {},
+                    "Brewery": {},
+                    "BusCompany": {},
+                    "LawFirm": {},
+                    "Publisher": {},
+                    "RecordLabel": {},
+                    "Winery": {}
+                },
+                "EducationalInstitution": {
+                    "College": {},
+                    "Library": {},
+                    "School": {},
+                    "University": {}
+                },
+                "GeopoliticalOrganisation": {},
+                "GovernmentAgency": {},
+                "Group": {},
+                "Legislature": {},
+                "MilitaryUnit": {},
+                "Non-ProfitOrganisation": {
+                    "RecordOffice": {}
+                },
+                "Parliament": {},
+                "PoliticalParty": {},
+                "PublicTransitSystem": {},
+                "SambaSchool": {},
+                "SportsLeague": {
+                    "AmericanFootballLeague": {},
+                    "AustralianFootballLeague": {},
+                    "AutoRacingLeague": {},
+                    "BaseballLeague": {},
+                    "BasketballLeague": {},
+                    "BowlingLeague": {},
+                    "BoxingLeague": {},
+                    "CanadianFootballLeague": {},
+                    "CricketLeague": {},
+                    "CurlingLeague": {},
+                    "CyclingLeague": {},
+                    "FieldHockeyLeague": {},
+                    "FormulaOneRacing": {},
+                    "GolfLeague": {},
+                    "HandballLeague": {},
+                    "IceHockeyLeague": {},
+                    "InlineHockeyLeague": {},
+                    "LacrosseLeague": {},
+                    "MixedMartialArtsLeague": {},
+                    "MotorcycleRacingLeague": {},
+                    "PaintballLeague": {},
+                    "PoloLeague": {},
+                    "RadioControlledRacingLeague": {},
+                    "RugbyLeague": {},
+                    "SoccerLeague": {},
+                    "SoftballLeague": {},
+                    "SpeedwayLeague": {},
+                    "TennisLeague": {},
+                    "VideogamesLeague": {},
+                    "VolleyballLeague": {}
+                },
+                "SportsTeam": {
+                    "AmericanFootballTeam": {},
+                    "AustralianFootballTeam": {},
+                    "BaseballTeam": {},
+                    "BasketballTeam": {},
+                    "CanadianFootballTeam": {},
+                    "CricketTeam": {},
+                    "CyclingTeam": {},
+                    "FormulaOneTeam": {},
+                    "HandballTeam": {},
+                    "HockeyTeam": {},
+                    "RugbyClub": {},
+                    "SoccerClub": {
+                        "NationalSoccerClub": {}
+                    },
+                    "SpeedwayTeam": {}
+                },
+                "TermOfOffice": {},
+                "TradeUnion": {}
+            },
+            "Person": {
+                "Ambassador": {},
+                "Archeologist": {},
+                "Architect": {},
+                "Aristocrat": {},
+                "Artist": {
+                    "Actor": {
+                        "AdultActor": {},
+                        "VoiceActor": {}
+                    },
+                    "Comedian": {},
+                    "ComicsCreator": {},
+                    "Dancer": {},
+                    "FashionDesigner": {},
+                    "Humorist": {},
+                    "MusicalArtist": {
+                        "BackScene": {},
+                        "ClassicalMusicArtist": {},
+                        "Instrumentalist": {
+                            "Guitarist": {}
+                        }
+                    },
+                    "Painter": {},
+                    "Photographer": {},
+                    "Sculptor": {},
+                    "Writer": {
+                        "Poet": {},
+                        "ScreenWriter": {}
+                    }
+                },
+                "Astronaut": {},
+                "Athlete": {
+                    "AustralianRulesFootballPlayer": {},
+                    "BadmintonPlayer": {},
+                    "BaseballPlayer": {},
+                    "BasketballPlayer": {},
+                    "Bodybuilder": {},
+                    "Boxer": {
+                        "AmateurBoxer": {}
+                    },
+                    "BullFighter": {},
+                    "Canoeist": {},
+                    "ChessPlayer": {},
+                    "Cricketer": {},
+                    "Curler": {},
+                    "Cyclist": {},
+                    "DartsPlayer": {},
+                    "Fencer": {},
+                    "FigureSkater": {},
+                    "GaelicGamesPlayer": {},
+                    "GolfPlayer": {},
+                    "GridironFootballPlayer": {
+                        "AmericanFootballPlayer": {},
+                        "CanadianFootballPlayer": {}
+                    },
+                    "Gymnast": {},
+                    "HandballPlayer": {},
+                    "HorseRider": {},
+                    "IceHockeyPlayer": {},
+                    "Jockey": {},
+                    "LacrossePlayer": {},
+                    "MartialArtist": {},
+                    "MotorsportRacer": {
+                        "MotorcycleRider": {
+                            "SpeedwayRider": {}
+                        },
+                        "RacingDriver": {
+                            "FormulaOneRacer": {},
+                            "MotocycleRacer": {},
+                            "NascarDriver": {},
+                            "RallyDriver": {}
+                        }
+                    },
+                    "NationalCollegiateAthleticAssociationAthlete": {},
+                    "NetballPlayer": {},
+                    "PokerPlayer": {},
+                    "Rower": {},
+                    "RugbyPlayer": {},
+                    "Skater": {},
+                    "Skier": {},
+                    "SnookerPlayer": {
+                        "SnookerChamp": {}
+                    },
+                    "SoccerPlayer": {},
+                    "SquashPlayer": {},
+                    "Surfer": {},
+                    "Swimmer": {},
+                    "TableTennisPlayer": {},
+                    "TeamMember": {},
+                    "TennisPlayer": {},
+                    "VolleyballPlayer": {
+                        "BeachVolleyballPlayer": {}
+                    },
+                    "Wrestler": {
+                        "SumoWrestler": {}
+                    }
+                },
+                "BeautyQueen": {},
+                "Bullfighter": {},
+                "BusinessPerson": {},
+                "Celebrity": {},
+                "Chef": {},
+                "Cleric": {
+                    "Cardinal": {},
+                    "ChristianBishop": {},
+                    "ChristianPatriarch": {},
+                    "Pope": {},
+                    "Priest": {},
+                    "Saint": {},
+                    "Vicar": {}
+                },
+                "Coach": {
+                    "AmericanFootballCoach": {},
+                    "CollegeCoach": {},
+                    "VolleyballCoach": {}
+                },
+                "Criminal": {
+                    "Murderer": {},
+                    "SerialKiller": {}
+                },
+                "Economist": {},
+                "Egyptologist": {},
+                "Engineer": {},
+                "Farmer": {},
+                "FictionalCharacter": {
+                    "ComicsCharacter": {
+                        "AnimangaCharacter": {}
+                    },
+                    "DisneyCharacter": {},
+                    "NarutoCharacter": {},
+                    "SoapCharacter": {}
+                },
+                "Historian": {},
+                "HorseTrainer": {},
+                "Journalist": {},
+                "Judge": {},
+                "Linguist": {},
+                "MilitaryPerson": {},
+                "Model": {},
+                "Monarch": {},
+                "MythologicalFigure": {},
+                "Noble": {},
+                "OfficeHolder": {},
+                "OrganisationMember": {
+                    "SportsTeamMember": {}
+                },
+                "Philosopher": {},
+                "PlayboyPlaymate": {},
+                "Politician": {
+                    "Chancellor": {},
+                    "Congressman": {},
+                    "Deputy": {},
+                    "Governor": {},
+                    "Lieutenant": {},
+                    "Mayor": {},
+                    "MemberOfParliament": {},
+                    "President": {},
+                    "PrimeMinister": {},
+                    "Senator": {},
+                    "VicePresident": {},
+                    "VicePrimeMinister": {}
+                },
+                "PoliticianSpouse": {},
+                "Presenter": {
+                    "RadioHost": {},
+                    "TelevisionHost": {}
+                },
+                "Psychologist": {},
+                "Referee": {},
+                "Religious": {},
+                "RomanEmperor": {},
+                "Royalty": {
+                    "BritishRoyalty": {
+                        "Baronet": {}
+                    },
+                    "PolishKing": {}
+                },
+                "Scientist": {
+                    "Entomologist": {},
+                    "Medician": {},
+                    "Professor": {}
+                },
+                "SportsManager": {
+                    "SoccerManager": {}
+                },
+                "TelevisionPersonality": {
+                    "Host": {}
+                }
+            }
+        },
+        "Altitude": {},
+        "AnatomicalStructure": {
+            "Artery": {},
+            "Bone": {},
+            "Brain": {},
+            "Embryology": {},
+            "Ligament": {},
+            "Lymph": {},
+            "Muscle": {},
+            "Nerve": {},
+            "Vein": {}
+        },
+        "Area": {},
+        "Award": {
+            "Decoration": {},
+            "NobelPrize": {}
+        },
+        "Biomolecule": {
+            "Enzyme": {},
+            "Gene": {
+                "HumanGene": {},
+                "MouseGene": {}
+            },
+            "Protein": {}
+        },
+        "Blazon": {},
+        "CareerStation": {},
+        "CelestialBody": {
+            "Asteroid": {},
+            "Constellation": {},
+            "Galaxy": {},
+            "Planet": {},
+            "Star": {
+                "BrownDwarf": {}
+            }
+        },
+        "ChartsPlacements": {},
+        "ChemicalSubstance": {
+            "ChemicalCompound": {},
+            "ChemicalElement": {},
+            "Mineral": {}
+        },
+        "Colour": {},
+        "Currency": {},
+        "Demographics": {},
+        "Depth": {},
+        "Device": {
+            "AutomobileEngine": {},
+            "Camera": {
+                "DigitalCamera": {}
+            },
+            "InformationAppliance": {},
+            "Instrument": {
+                "Guitar": {},
+                "Organ": {}
+            },
+            "Weapon": {}
+        },
+        "Diploma": {},
+        "Disease": {},
+        "Drug": {},
+        "EthnicGroup": {},
+        "Event": {
+            "LifeCycleEvent": {
+                "PersonalEvent": {
+                    "Birth": {},
+                    "Death": {},
+                    "Divorce": {},
+                    "Marriage": {}
+                }
+            },
+            "NaturalEvent": {
+                "SolarEclipse": {}
+            },
+            "SocietalEvent": {
+                "Convention": {},
+                "Election": {
+                    "ElectionDiagram": {}
+                },
+                "FilmFestival": {},
+                "Meeting": {},
+                "MilitaryConflict": {},
+                "MusicFestival": {},
+                "SpaceMission": {},
+                "SportsEvent": {
+                    "CyclingCompetition": {},
+                    "FootballMatch": {},
+                    "GrandPrix": {},
+                    "MixedMartialArtsEvent": {},
+                    "NationalFootballLeagueEvent": {},
+                    "Olympics": {
+                        "OlympicEvent": {}
+                    },
+                    "Race": {
+                        "CyclingRace": {},
+                        "HorseRace": {}
+                    },
+                    "Tournament": {
+                        "GolfTournament": {},
+                        "SoccerTournament": {},
+                        "TennisTournament": {},
+                        "WomensTennisAssociationTournament": {}
+                    },
+                    "WrestlingEvent": {}
+                }
+            }
+        },
+        "Flag": {},
+        "Food": {
+            "Beverage": {
+                "Beer": {},
+                "Wine": {
+                    "ControlledDesignationOfOriginWine": {}
+                }
+            },
+            "Cheese": {}
+        },
+        "GeneLocation": {
+            "HumanGeneLocation": {},
+            "MouseGeneLocation": {}
+        },
+        "GrossDomesticProduct": {},
+        "GrossDomesticProductPerCapita": {},
+        "Holiday": {},
+        "HumanDevelopmentIndex": {},
+        "Imdb": {},
+        "Language": {},
+        "Letter": {},
+        "List": {
+            "TrackList": {}
+        },
+        "Listen": {},
+        "MeanOfTransportation": {
+            "Aircraft": {},
+            "Automobile": {},
+            "Locomotive": {},
+            "Motorcycle": {},
+            "Rocket": {},
+            "Ship": {},
+            "SpaceShuttle": {},
+            "SpaceStation": {},
+            "Spacecraft": {},
+            "Train": {}
+        },
+        "Media": {},
+        "Name": {
+            "GivenName": {},
+            "Surname": {}
+        },
+        "PenaltyShootOut": {},
+        "PersonFunction": {
+            "PoliticalFunction": {},
+            "Profession": {}
+        },
+        "Place": {
+            "Abbey": {},
+            "ArchitecturalStructure": {
+                "AmusementParkAttraction": {
+                    "RollerCoaster": {},
+                    "WaterRide": {}
+                },
+                "Arena": {},
+                "Building": {
+                    "Casino": {},
+                    "Castle": {},
+                    "Factory": {},
+                    "HistoricBuilding": {},
+                    "Hospital": {},
+                    "Hotel": {},
+                    "MilitaryStructure": {},
+                    "Museum": {},
+                    "Prison": {},
+                    "ReligiousBuilding": {
+                        "Church": {},
+                        "Mosque": {},
+                        "Synagogue": {},
+                        "Temple": {}
+                    },
+                    "Restaurant": {},
+                    "ShoppingMall": {},
+                    "Skyscraper": {},
+                    "Venue": {
+                        "Theatre": {}
+                    }
+                },
+                "Garden": {},
+                "Gate": {},
+                "Infrastructure": {
+                    "Airport": {},
+                    "Dam": {},
+                    "LaunchPad": {},
+                    "Lock": {},
+                    "PowerStation": {
+                        "NuclearPowerStation": {}
+                    },
+                    "RouteOfTransportation": {
+                        "Bridge": {},
+                        "RailwayLine": {},
+                        "Road": {},
+                        "RoadJunction": {},
+                        "Tunnel": {
+                            "RailwayTunnel": {},
+                            "RoadTunnel": {},
+                            "WaterwayTunnel": {}
+                        }
+                    },
+                    "Station": {
+                        "MetroStation": {},
+                        "RailwayStation": {}
+                    }
+                },
+                "Mill": {
+                    "Treadmill": {},
+                    "Watermill": {},
+                    "WindMotor": {},
+                    "Windmill": {}
+                },
+                "NoteworthyPartOfBuilding": {},
+                "Shrine": {},
+                "Tower": {
+                    "Lighthouse": {},
+                    "WaterTower": {}
+                }
+            },
+            "Cemetery": {},
+            "Community": {},
+            "CountrySeat": {},
+            "HistoricPlace": {},
+            "Monastery": {},
+            "Monument": {
+                "GraveMonument": {},
+                "Memorial": {}
+            },
+            "NaturalPlace": {
+                "Archipelago": {},
+                "BodyOfWater": {
+                    "Lake": {},
+                    "Sea": {},
+                    "Stream": {
+                        "Canal": {},
+                        "River": {}
+                    }
+                },
+                "Cave": {},
+                "Crater": {
+                    "LunarCrater": {}
+                },
+                "Glacier": {},
+                "HotSpring": {},
+                "Mountain": {},
+                "MountainPass": {},
+                "MountainRange": {},
+                "Valley": {},
+                "Volcano": {}
+            },
+            "Park": {},
+            "PopulatedPlace": {
+                "Agglomeration": {},
+                "Continent": {},
+                "Country": {},
+                "Department": {
+                    "OverseasDepartment": {}
+                },
+                "Intercommunality": {},
+                "Island": {
+                    "Atoll": {}
+                },
+                "Locality": {},
+                "Prefecture": {},
+                "Region": {
+                    "AdministrativeRegion": {
+                        "ClericalAdministrativeRegion": {
+                            "Deanery": {},
+                            "Diocese": {},
+                            "Parish": {}
+                        },
+                        "GovernmentalAdministrativeRegion": {
+                            "District": {},
+                            "DistrictWaterBoard": {},
+                            "MicroRegion": {},
+                            "Municipality": {
+                                "FormerMunicipality": {}
+                            },
+                            "Province": {},
+                            "Regency": {},
+                            "SubMunicipality": {}
+                        }
+                    },
+                    "NaturalRegion": {}
+                },
+                "Settlement": {
+                    "City": {},
+                    "CityDistrict": {},
+                    "Town": {},
+                    "Village": {}
+                },
+                "State": {},
+                "Street": {}
+            },
+            "ProtectedArea": {},
+            "SiteOfSpecialScientificInterest": {},
+            "SkiArea": {},
+            "SkiResort": {},
+            "SportFacility": {
+                "CricketGround": {},
+                "GolfCourse": {},
+                "RaceTrack": {
+                    "Racecourse": {}
+                },
+                "Stadium": {}
+            },
+            "WineRegion": {},
+            "WorldHeritageSite": {}
+        },
+        "Polyhedron": {},
+        "Population": {},
+        "PublicService": {
+            "PublicServiceInput": {},
+            "PublicServiceOutput": {}
+        },
+        "Sales": {},
+        "Satellite": {
+            "ArtificialSatellite": {}
+        },
+        "SnookerWorldRanking": {},
+        "Species": {
+            "Archaea": {},
+            "Bacteria": {},
+            "Eukaryote": {
+                "Animal": {
+                    "Amphibian": {},
+                    "Arachnid": {},
+                    "Bird": {},
+                    "Crustacean": {},
+                    "Fish": {},
+                    "Insect": {},
+                    "Mammal": {
+                        "Dog": {},
+                        "RaceHorse": {}
+                    },
+                    "Mollusca": {},
+                    "Reptile": {}
+                },
+                "Fungus": {},
+                "Plant": {
+                    "ClubMoss": {},
+                    "Conifer": {},
+                    "CultivatedVariety": {},
+                    "Cycad": {},
+                    "Fern": {},
+                    "FloweringPlant": {
+                        "Grape": {}
+                    },
+                    "Ginkgo": {},
+                    "Gnetophytes": {},
+                    "GreenAlga": {},
+                    "Moss": {}
+                }
+            }
+        },
+        "SportCompetitionResult": {
+            "OlympicResult": {}
+        },
+        "SportsSeason": {
+            "MotorsportSeason": {},
+            "SportsTeamSeason": {
+                "BaseballSeason": {},
+                "FootballLeagueSeason": {
+                    "NationalFootballLeagueSeason": {}
+                },
+                "NCAATeamSeason": {},
+                "SoccerClubSeason": {},
+                "SoccerLeagueSeason": {}
+            }
+        },
+        "Statistic": {},
+        "Swarm": {
+            "Globularswarm": {},
+            "Openswarm": {}
+        },
+        "Tax": {},
+        "TimePeriod": {
+            "GeologicalPeriod": {},
+            "HistoricalPeriod": {},
+            "PeriodOfArtisticStyle": {},
+            "PrehistoricalPeriod": {},
+            "ProtohistoricalPeriod": {},
+            "Year": {},
+            "YearInSpaceflight": {}
+        },
+        "TopicalConcept": {
+            "ChristianDoctrine": {},
+            "Fashion": {},
+            "Genre": {
+                "MovieGenre": {},
+                "MusicGenre": {}
+            },
+            "Ideology": {},
+            "SystemOfLaw": {},
+            "Taxon": {},
+            "Type": {
+                "DocumentType": {},
+                "GovernmentType": {}
+            }
+        },
+        "UnitOfWork": {
+            "Case": {
+                "LegalCase": {
+                    "SupremeCourtOfTheUnitedStatesCase": {}
+                }
+            },
+            "Project": {
+                "ResearchProject": {}
+            }
+        },
+        "Unknown": {},
+        "Work": {
+            "Artwork": {
+                "Painting": {},
+                "Sculpture": {}
+            },
+            "Cartoon": {
+                "Anime": {},
+                "HollywoodCartoon": {}
+            },
+            "CollectionOfValuables": {
+                "Archive": {}
+            },
+            "Database": {
+                "BiologicalDatabase": {}
+            },
+            "Film": {},
+            "LineOfFashion": {},
+            "Musical": {},
+            "MusicalWork": {
+                "Album": {},
+                "ArtistDiscography": {},
+                "ClassicalMusicComposition": {},
+                "Opera": {},
+                "Single": {},
+                "Song": {
+                    "EurovisionSongContestEntry": {}
+                }
+            },
+            "RadioProgram": {},
+            "Software": {
+                "ProgrammingLanguage": {},
+                "VideoGame": {}
+            },
+            "TelevisionEpisode": {},
+            "TelevisionSeason": {},
+            "TelevisionShow": {},
+            "Website": {},
+            "WrittenWork": {
+                "Annotation": {
+                    "Reference": {}
+                },
+                "Book": {
+                    "Novel": {
+                        "LightNovel": {}
+                    }
+                },
+                "Comic": {},
+                "Comics": {
+                    "ComicStrip": {},
+                    "Manga": {},
+                    "Manhua": {},
+                    "Manhwa": {}
+                },
+                "Drama": {},
+                "Installment": {},
+                "MultiVolumePublication": {},
+                "PeriodicalLiterature": {
+                    "AcademicJournal": {},
+                    "Magazine": {},
+                    "Newspaper": {}
+                },
+                "Play": {},
+                "Poem": {},
+                "Resume": {},
+                "StatedResolution": {}
+            }
+        },
+        "cidoccrm:E4_Period": {},
+        "foaf:Document": {},
+        "foaf:Person": {},
+        "geo:SpatialThing": {},
+        "gml:_Feature": {},
+        "rdf:Property": {},
+        "skos:Concept": {},
+        "skos:OrderedCollection": {}
+    }
+}

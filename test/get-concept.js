@@ -20,16 +20,20 @@ describe('Get a concept by URI using the semantic API', function(){
     });
     
     it('Should return a description', function(){
-        assert.equal(typeof(response.abstract), 'string');
+        assert.equal(typeof(response.description), 'string');
     });
 
     it('Should return 10 related articls by default', function(){
         assert.equal(10, response.articles.length);
     });
     
+    it('Should return multiple values for the type for this test object', function(){
+        assert.equal(true, (response.type.length > 1));
+    });
+
 });
 
-describe('Get articles for a concept using the semantic API', function(){
+describe('Get additional articles for a concept using the semantic API', function(){
     var response = { };
     
     beforeEach(function(done){

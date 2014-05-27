@@ -32,7 +32,7 @@ http://newshack.co.uk/newshack-ii/newslabs-apis/
 The News Juicer API:
 http://newshack.co.uk/newshack-ii/juicer-apis/
 
-## Methods with examples
+## Usage with examples
 
 ### getConcepts()
 
@@ -51,22 +51,70 @@ newsQuery.getConcepts("Rooney", 5)
 });
 ```
 
-The response from getConcepts() is an array of concepts, each with a unique URI (and possibly an image):
+The response from getConcepts() is an array of concepts, each with a unique URI (and possibly an image).
+
+Note in the example below 'Wayne Rooney' is a SoccerPlayer, and SoccerPlayers are Atheletes, and Atheletess are People.
+
+Mickey Rooney is classed as a Person, although it has not specifically identified him as an Actor - the granularity of the specificify may vary from concept to concept.
+
+NB: 'Agent', which is as the last type for both, is simply a top level ontology class associated with all People and Organisations (and does not refer to being sports or acting agent). In this context an 'Agent' is a thing that acts in the world, for example, as distinct from something that is an Activity or a Place.
 
 ``` javascript
 [ { name: 'Wayne Rooney',
     uri: 'http://dbpedia.org/resource/Wayne_Rooney',
-    typeUri: 'http://dbpedia.org/ontology/SoccerPlayer',
-    image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Rooney_CL.jpg/200px-Rooney_CL.jpg' },
-    { name: 'Mickey Rooney',
+    image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Rooney_CL.jpg/200px-Rooney_CL.jpg',
+    type: 
+     [ 'http://dbpedia.org/ontology/SoccerPlayer',
+       'http://dbpedia.org/ontology/Athlete',
+       'http://dbpedia.org/ontology/Person',
+       'http://dbpedia.org/ontology/Agent' ] },
+  { name: 'Mickey Rooney',
     uri: 'http://dbpedia.org/resource/Mickey_Rooney',
-    typeUri: 'http://dbpedia.org/ontology/Person',
-    image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Mickey_Rooney_still.jpg/200px-Mickey_Rooney_still.jpg' } ]
+    image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Mickey_Rooney_still.jpg/200px-Mickey_Rooney_still.jpg',
+    type: 
+     [ 'http://dbpedia.org/ontology/Person',
+       'http://dbpedia.org/ontology/Agent' ] }
+]
 ````
+
+### getConcept()
+
+If you have the definative URI for a concept you can use it's URI to request additional information about it.
+
+For example, you can check the "type" field to see if it's categorized as a Person, Place, Organisation, etc (you can also check for more specific types, like SoccerPlayer or Company).
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.getConcept(http://dbpedia.org/resource/David_Cameron, 1)
+.then(function(concept) {
+    console.log(concept);
+});
+```
+
+The response is a single object, with a description of it
+
+``` javascript
+ { description: 'David William Donald Cameron is the Prime Minister of the United Kingdom, First Lord of the Treasury, Minister for the Civil Service and Leader of the Conservative Party. He represents Witney as its Member of Parliament (MP). Cameron studied Philosophy, Politics and Economics (PPE) at Oxford, gaining a first class honours degree. He then joined the Conservative Research Department and became Special Adviser to Norman Lamont, and then to Michael Howard.',
+  articles: 
+   [ { product: 'http://www.bbc.co.uk/ontologies/bbc/IrishIndependant',
+       summary: 'The UK Independence Party has stormed to victory in the European elections and unleashing a political whirlwind in Britain.',
+       title: 'Farage throws down gauntlet as Ukip unleashes whirlwind',
+       article: 'http://www.independent.ie/world-news/europe/farage-throws-down-gauntlet-as-ukip-unleashes-whirlwind-30306752.html',
+       cpsid: 'irish_independant_7ddba5bc3c79dca7f45714c782c73e61625d8b85',
+       published: '2014-05-27T01:30:00Z' } ]
+  thumbnail: 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Official-photo-cameron.png/200px-Official-photo-cameron.png',
+  label: 'David Cameron',
+  type: 
+   [ 'http://dbpedia.org/ontology/OfficeHolder',
+     'http://dbpedia.org/ontology/Person',
+     'http://dbpedia.org/ontology/Agent' ],
+  uri: 'http://dbpedia.org/resource/David_Cameron' }
+```
 
 ### getRelatedConcepts()
 
-To get concepts related to "Ukraine":
+You can fetch concepts that - by being linked through news articles - are linked to a given concept. For example, to get concepts related to "Ukraine":
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';

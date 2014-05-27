@@ -104,7 +104,7 @@ The response is a single object, with a description of it
        cpsid: 'irish_independant_7ddba5bc3c79dca7f45714c782c73e61625d8b85',
        published: '2014-05-27T01:30:00Z' } ]
   thumbnail: 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Official-photo-cameron.png/200px-Official-photo-cameron.png',
-  label: 'David Cameron',
+  name: 'David Cameron',
   type: 
    [ 'http://dbpedia.org/ontology/OfficeHolder',
      'http://dbpedia.org/ontology/Person',

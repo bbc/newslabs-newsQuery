@@ -79,9 +79,9 @@ NB: 'Agent', which is as the last type for both, is simply a top level ontology 
 
 ### getConcept()
 
-If you have the definative URI for a concept you can use it's URI to request detailed information about a concept, such as it's 
+If you have the definative URI for a concept you can use it's URI to request detailed information about a concept, such as a description and it's type.
 
-For example, you can check the "type" field to see if it's categorized as a Person, Place, Organisation, etc (you can also check for more specific types, like SoccerPlayer or Company).
+e.g. You can check the "type" field to see if it's categorized as a Person, Place, Organisation, etc (you can also check for more specific types, like SoccerPlayer or Company).
 
 Note that calling getConcept() explicitly on a URI may return more specific type information than is returned along with a concept in other calls, such as getArticlesByConcept().
 
@@ -283,3 +283,31 @@ This is an example of slightly inconsistent behaviour between function calls - a
             'http://dbpedia.org/ontology/Agent' ] } ]
   }
 ]
+```
+
+### getConceptOccurrencesOverTime()
+
+You can query how many occurences there are for a given concept between a series of dates, the startDate and endDate can be up to a year apart.
+
+If you don't specify a startDate or an endDate (both should be strings in the form 'YYYY-MM-DD') then the current date will be used for either value.
+
+Tip: If you're looking for a great date handling library, check out moment
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Ukraine", "2014-05-24", "2014-05-28")
+.then(function(articles) {
+    console.log(articles);
+});
+```
+
+The response from getConceptOccurrencesOverTime() is an array of objects with 'date' and 'value' keys. This is particularly useful if you want to pass the array directly to something like D3 to graph the results.
+
+``` javascript
+[ { date: '2014-05-24', value: 5 },
+  { date: '2014-05-25', value: 13 },
+  { date: '2014-05-26', value: 28 },
+  { date: '2014-05-27', value: 17 },
+  { date: '2014-05-28', value: 9 } ]
+```

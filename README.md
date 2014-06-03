@@ -22,16 +22,6 @@ Registration is free and immediate, you will receive an automated email when you
 2. Select both the "bbcrd-newslabs-apis-product" and "bbcrd-juicer-apis-product" APIs for your application.
 3. Your API key will be listed as the "Consumer Key" for your application.
 
-## Additional documentation
-
-You can find full information about how the BBC News Labs semantic APIs work on the #newsHACK site:
-
-The semantic News Labs API:
-http://newshack.co.uk/newshack-ii/newslabs-apis/
-
-The News Juicer API:
-http://newshack.co.uk/newshack-ii/juicer-apis/
-
 ## Usage with examples
 
 ### getConcepts()
@@ -94,7 +84,7 @@ newsQuery.getConcept("http://dbpedia.org/resource/David_Cameron", 1)
 });
 ```
 
-The response is a single object, with a description of it
+The response is a single object, with a description and additional metadata, typically an image, and at least one article about the subject (you can specify more via the second parameter to the function).
 
 ``` javascript
  { description: 'David William Donald Cameron is the Prime Minister of the United Kingdom, First Lord of the Treasury, Minister for the Civil Service and Leader of the Conservative Party. He represents Witney as its Member of Parliament (MP). Cameron studied Philosophy, Politics and Economics (PPE) at Oxford, gaining a first class honours degree. He then joined the Conservative Research Department and became Special Adviser to Norman Lamont, and then to Michael Howard.',
@@ -157,7 +147,7 @@ Example response from getArticlesByConcept() is shown below.
 
 Note that the response includes quite high level type information for each concept, but it does return the latitude and longitude values for concepts that are identified as places.
 
-This is an example of slightly inconsistent behaviour between function calls - as lat/lon values are not returned for Places by a other calls - but is something being looked at to see if we can improve.
+This is an example of slightly inconsistent behaviour between function calls - as lat/lon values are not returned for Places by any other calls. This is something we are looking at to see if we can improve.
 
 ``` javascript
 [ 
@@ -302,7 +292,7 @@ newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Ukraine", "
 });
 ```
 
-The response from getConceptOccurrencesOverTime() is an array of objects with 'date' and 'value' keys. This is particularly useful if you want to pass the array directly to something like D3 to graph the results.
+The response from getConceptOccurrencesOverTime() is an array of objects with 'date' and 'value' keys, in order of oldest to most recent.
 
 ``` javascript
 [ { date: '2014-05-24', value: 5 },
@@ -311,3 +301,19 @@ The response from getConceptOccurrencesOverTime() is an array of objects with 'd
   { date: '2014-05-27', value: 17 },
   { date: '2014-05-28', value: 9 } ]
 ```
+
+You can request dates up to a year apart. The bulk of the data goes back 6 months and we are still in the progress of adding new sources.
+
+## Additional documentation
+
+You can find full information about how the raw BBC News Labs semantic APIs work on the #newsHACK site:
+
+The semantic News Labs API:
+http://newshack.co.uk/newshack-ii/newslabs-apis/
+
+The News Juicer API:
+http://newshack.co.uk/newshack-ii/juicer-apis/
+
+Note that the formats of the responses may differ slightly if using the raw APIs.
+
+This library - and the service - is of course made avalible without warrenty of any kind.

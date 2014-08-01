@@ -7,7 +7,7 @@ The APIs let you query a database of 40+ sources, including content from the BBC
 
 The majority of our content is articles but we also have images, video and tweets from select sources.
 
-The BBC News Labs API's are **experimental*** and are cheifly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
+The BBC News Labs API's are **experimental** and are cheifly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
 
 **Important!** To use this library you must have a BBC News Labs API key (which is free to sign up for). See instructions below for how to do this.
 
@@ -355,9 +355,9 @@ var moment = require("moment");
 var apiKey = '1234567890ABCDEF';
 var newsQuery = require('newsquery')(apiKey);
 newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Russia",
-                                        moment().subtract(7,'days').format('YYYY-MM-DD'),
-                                        moment().format('YYYY-MM-DD'),
-                                        "http://www.bbc.co.uk/ontologies/bbc/TheGuardian")
+    moment().subtract(7,'days').format('YYYY-MM-DD'),
+    moment().format('YYYY-MM-DD'),
+    "http://www.bbc.co.uk/ontologies/bbc/TheGuardian")
 .then(function(occurrences) {
     console.log(occurrences);
 });

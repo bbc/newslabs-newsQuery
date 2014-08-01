@@ -346,7 +346,7 @@ The response from getConceptOccurrencesOverTime() is an array of objects with 'd
   { date: '2014-05-28', value: 9 } ]
 ```
 
-If you want to filter by a specific source, you can specify a source URI (i.e. from the list returned by `getSources()`) as an optional 4 paramter.
+If you want to filter by a specific source, you can specify a source URI - from the list returned by `getSources()` - as an optional 4th paramter.
 
 The below example shows how to get the number of articles related to Russia that appeared in The Guardian in the last 7 days:
 

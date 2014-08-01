@@ -7,10 +7,10 @@ var newsquery = require(__dirname+'/../lib/newsquery')(config.bbcNewsLabs.apiKey
 describe('Get the number of occurences of a concept today', function(){
     var response = { };
 
-    beforeEach(function(done){
+    before(function(done){
         newsquery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Ukraine")
-        .then(function(concept) {
-            response = concept;
+        .then(function(occurences) {
+            response = occurences;
             done();
         });
     });
@@ -31,16 +31,37 @@ describe('Get the number of occurences of a concept today', function(){
 describe('Get the number of occurences of a concept over the last 30 days', function(){
     var response = { };
 
-    beforeEach(function(done){
+    before(function(done){
         newsquery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Ukraine", moment().subtract(30, 'days').format('YYYY-MM-DD'), moment().format('YYYY-MM-DD'))
-        .then(function(concept) {
-            response = concept;
+        .then(function(occurences) {
+            response = occurences;
             done();
         });
     });
     
     it('Should return results for the last 30 days', function(){
         assert.equal(30, response.length);
+    });
+});
+
+
+describe('Get the number of occurences of a concept from a specific source over the last 7 days', function(){
+    var response = { };
+
+    before(function(done){
+        newsquery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Russia",
+                                                moment().subtract(7, 'days').format('YYYY-MM-DD'),
+                                                moment().format('YYYY-MM-DD'),
+                                                "http://www.bbc.co.uk/ontologies/bbc/TheGuardian"
+                                                )
+        .then(function(occurences) {
+            response = occurences;
+            done();
+        });
+    });
+    
+    it('Should return results for the last 7 days', function(){
+        assert.equal(7, response.length);
     });
 });
 

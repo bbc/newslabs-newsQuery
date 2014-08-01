@@ -9,10 +9,10 @@ describe('Get articles by concept using the semantic API', function(){
     this.timeout(10000);
     var response = { };
     
-    beforeEach(function(done){
+    before(function(done){
         newsquery.getArticlesByConcept("http://dbpedia.org/resource/David_Cameron")
-        .then(function(concept) {
-            response = concept;
+        .then(function(articles) {
+            response = articles;
             done();
         });
     });

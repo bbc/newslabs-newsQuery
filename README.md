@@ -7,7 +7,7 @@ The APIs let you query a database of 40+ sources, including content from the BBC
 
 The majority of our content is articles but we also have images, video and tweets from select sources.
 
-The BBC News Labs API's are experimental and are cheifly intended for use by R&D teams in news orgs and in universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
+The BBC News Labs API's are **experimental*** and are cheifly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
 
 **Important!** To use this library you must have a BBC News Labs API key (which is free to sign up for). See instructions below for how to do this.
 
@@ -43,13 +43,11 @@ The response is an array of objects with `name` and `uri` properties:
 [ { name: 'Sky News',
     uri: 'http://www.bbc.co.uk/ontologies/bbc/SkyNews'
   },
-  { name: 'BBC News',
-    uri: 'http://www.bbc.co.uk/ontologies/bbc/News'
+  { name: 'The Guardian',
+    uri: 'http://www.bbc.co.uk/ontologies/bbc/TheGuardian'
   } ...
  ]
  ```
-
-In future release it will be possible to use these URIs when calling the methods below.
 
 ### getConcepts()
 
@@ -138,7 +136,7 @@ You can fetch concepts that - by being linked through news articles - are linked
 ``` javascript
 var apiKey = '1234567890ABCDEF';
 var newsQuery = require('newsquery')(apiKey);
-newsQuery.getCoOccuringConcepts("http://dbpedia.org/resource/Ukraine", 5)
+newsQuery.getCoOccuringConcepts("http://dbpedia.org/resource/Ukraine")
 .then(function(concepts) {
     console.log(concepts);
 });
@@ -155,6 +153,27 @@ i.e. how much times both concepts have been mentioned in the same article, tagge
     image: 'http://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/200px-Flag_of_Russia.svg.png' 
   }
 ]
+```
+
+
+You can also optionally specify:
+
+- A limit on the number of results
+- The URI one or more `types` (as a string, or array of strings) of object to get (e.g. "http://www.bbc.co.uk/ontologies/bbc/Person", "http://www.bbc.co.uk/ontologies/bbc/Company" etc.)
+- The URI of a specific source you want to filter on (e.g. http://www.bbc.co.uk/ontologies/bbc/SkyNews)
+
+For example the following query would return the top 10 people Sky News mentioned in stories that related to the Ukraine.
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.getCoOccuringConcepts("http://dbpedia.org/resource/Ukraine",
+                                10,
+                                "http://www.bbc.co.uk/ontologies/bbc/Person"
+                                "http://www.bbc.co.uk/ontologies/bbc/SkyNews")
+.then(function(concepts) {
+    console.log(concepts);
+});
 ```
 
 ### getArticlesByConcept()
@@ -308,8 +327,6 @@ You can query how many occurences there are for a given concept between a series
 
 If you don't specify a startDate or an endDate (both should be strings in the form 'YYYY-MM-DD') then the current date will be used for either value.
 
-Tip: If you're looking for a great date handling library, check out 'moment'.
-
 ``` javascript
 var apiKey = '1234567890ABCDEF';
 var newsQuery = require('newsquery')(apiKey);
@@ -329,7 +346,24 @@ The response from getConceptOccurrencesOverTime() is an array of objects with 'd
   { date: '2014-05-28', value: 9 } ]
 ```
 
-You can request dates up to a year apart. The bulk of the data goes back over 6 months, we are still in the progress of adding sources.
+If you want to filter by a specific source, you can specify a source URI (i.e. from the list returned by `getSources()`) as an optional 4 paramter.
+
+The below example shows how to get the number of articles related to Russia that appeared in The Guardian in the last 7 days:
+
+``` javascript
+var moment = require("moment");
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Russia",
+                                        moment().subtract(7,'days').format('YYYY-MM-DD'),
+                                        moment().format('YYYY-MM-DD'),
+                                        "http://www.bbc.co.uk/ontologies/bbc/TheGuardian")
+.then(function(occurrences) {
+    console.log(occurrences);
+});
+```
+
+Note: You can request dates up to a year apart. The bulk of the data goes back over 6 months, we are still in the progress of adding sources.
 
 ## Additional documentation
 

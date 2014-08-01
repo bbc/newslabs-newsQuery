@@ -7,7 +7,7 @@ describe('Find concepts by name using the semantic API', function(){
     var limit = 5;
     var response = { };
     
-    beforeEach(function(done){
+    before(function(done){
         newsquery.getConcepts("Smith", limit)
         .then(function(concepts) {
             response = concepts;
@@ -41,7 +41,7 @@ describe('Gracefully fail to find concept by name using the semantic API', funct
     var limit = 5;
     var response = { };
     
-    beforeEach(function(done){
+    before(function(done){
         newsquery.getConcepts("ABCDEFABCDEF12345678901234567890", limit)
         .then(function(concepts) {
             response = concepts;

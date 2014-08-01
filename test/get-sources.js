@@ -6,7 +6,7 @@ var newsquery = require(__dirname+'/../lib/newsquery')(config.bbcNewsLabs.apiKey
 describe('Get sources the semantic API knows about', function(){
     var response;
     
-    beforeEach(function(done){
+    before(function(done){
         newsquery.getSources()
         .then(function(sources) {
             response = sources;

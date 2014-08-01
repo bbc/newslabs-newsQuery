@@ -6,7 +6,7 @@ var newsquery = require(__dirname+'/../lib/newsquery')(config.bbcNewsLabs.apiKey
 describe('Get a concept by URI using the semantic API', function(){
     var response = { };
     
-    beforeEach(function(done){
+    before(function(done){
         // @fixme Tried Adam_Smith (the economist) but heis not in our list of known concepts (despite being in dbpedia)
         newsquery.getConcept("http://dbpedia.org/resource/David_Cameron")
         .then(function(concept) {
@@ -40,7 +40,7 @@ describe('Get a concept by URI using the semantic API', function(){
 describe('Get additional articles for a concept using the semantic API', function(){
     var response = { };
     
-    beforeEach(function(done){
+    before(function(done){
         newsquery.getConcept("http://dbpedia.org/resource/David_Cameron", 20)
         .then(function(concept) {
             response = concept;

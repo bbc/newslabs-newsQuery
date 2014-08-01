@@ -3,9 +3,9 @@ newsQuery
 
 The newsQuery module provides easy-to-consume access to the BBC News Labs APIs.
 
-The APIs let you query a database of 40+ news sources, including content from the BBC but also other publications including The Guardian, The Mirror, The Huffington Post and others.
+The APIs let you query a database of 40+ sources, including content from the BBC News but also other publications including Sky News, The Guardian, The Mirror, The Huffington Post and others.
 
-The majority of our content is articles but we also have images, video and tweets from a select range of sources.
+The majority of our content is articles but we also have images, video and tweets from select sources.
 
 The BBC News Labs API's are experimental and are cheifly intended for use by R&D teams in news orgs and in universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
 
@@ -21,16 +21,6 @@ Registration is free and immediate, you will receive an automated email when you
 1. After registering, create a new application.
 2. Select both the "bbcrd-newslabs-apis-product" and "bbcrd-juicer-apis-product" APIs for your application.
 3. Your API key will be listed as the "Consumer Key" for your application.
-
-## Additional documentation
-
-You can find additonal information about how the BBC News Labs semantic APIs work on the #newsHACK site:
-
-The semantic News Labs API:
-http://newshack.co.uk/newshack-ii/newslabs-apis/
-
-The News Juicer API:
-http://newshack.co.uk/newshack-ii/juicer-apis/
 
 ## Usage with examples
 
@@ -121,7 +111,7 @@ newsQuery.getConcept("http://dbpedia.org/resource/David_Cameron", 1)
 });
 ```
 
-The response is a single object, with a description of it
+The response is a single object, with a description and additional metadata, typically an image, and at least one article about the subject (you can specify more via the second parameter to the function).
 
 ``` javascript
  { description: 'David William Donald Cameron is the Prime Minister of the United Kingdom, First Lord of the Treasury, Minister for the Civil Service and Leader of the Conservative Party. He represents Witney as its Member of Parliament (MP). Cameron studied Philosophy, Politics and Economics (PPE) at Oxford, gaining a first class honours degree. He then joined the Conservative Research Department and became Special Adviser to Norman Lamont, and then to Michael Howard.',
@@ -184,7 +174,7 @@ Example response from getArticlesByConcept() is shown below.
 
 Note that the response includes quite high level type information for each concept, but it does return the latitude and longitude values for concepts that are identified as places.
 
-This is an example of slightly inconsistent behaviour between function calls - as lat/lon values are not returned for Places by a other calls - but is something being looked at to see if we can improve.
+This is an example of slightly inconsistent behaviour between function calls - as lat/lon values are not returned for Places by any other calls. This is something we are looking at to see if we can improve.
 
 ``` javascript
 [ 
@@ -329,7 +319,7 @@ newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Ukraine", "
 });
 ```
 
-The response from getConceptOccurrencesOverTime() is an array of objects with 'date' and 'value' keys. This is particularly useful if you want to pass the array directly to something like D3 to graph the results.
+The response from getConceptOccurrencesOverTime() is an array of objects with 'date' and 'value' keys, in order of oldest to most recent.
 
 ``` javascript
 [ { date: '2014-05-24', value: 5 },
@@ -338,3 +328,17 @@ The response from getConceptOccurrencesOverTime() is an array of objects with 'd
   { date: '2014-05-27', value: 17 },
   { date: '2014-05-28', value: 9 } ]
 ```
+
+You can request dates up to a year apart. The bulk of the data goes back over 6 months, we are still in the progress of adding sources.
+
+## Additional documentation
+
+You can find full information about how the raw BBC News Labs semantic APIs work on the #newsHACK site:
+
+The semantic News Labs API:
+http://newshack.co.uk/newshack-ii/newslabs-apis/
+
+The News Juicer API:
+http://newshack.co.uk/newshack-ii/juicer-apis/
+
+Note that the formats of the responses may differ if using the raw APIs, this module attempts to simplify them to make them easier to consume.

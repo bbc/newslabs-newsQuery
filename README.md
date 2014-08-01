@@ -7,9 +7,9 @@ The APIs let you query a database of 40+ news sources, including content from th
 
 The majority of our content is articles but we also have images, video and tweets from a select range of sources.
 
-The BBC News Labs API's are experimental and are cheifly intended for use by R&D teams in news orgs and in universities. If you'd like to more more or have any feedback about them, you can get in touch with @BBC_News_Labs on Twitter.
+The BBC News Labs API's are experimental and are cheifly intended for use by R&D teams in news orgs and in universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
 
-**Important!** To use this library you must have a BBC News Labs API key (which is free). See instructions below for how to do this.
+**Important!** To use this library you must have a BBC News Labs API key (which is free to sign up for). See instructions below for how to do this.
 
 ### How to get an API key
 
@@ -24,7 +24,7 @@ Registration is free and immediate, you will receive an automated email when you
 
 ## Additional documentation
 
-You can find full information about how the BBC News Labs semantic APIs work on the #newsHACK site:
+You can find additonal information about how the BBC News Labs semantic APIs work on the #newsHACK site:
 
 The semantic News Labs API:
 http://newshack.co.uk/newshack-ii/newslabs-apis/
@@ -33,6 +33,33 @@ The News Juicer API:
 http://newshack.co.uk/newshack-ii/juicer-apis/
 
 ## Usage with examples
+
+### getSources()
+
+You can get a list of sources the Semantic API knows about with `getSources()`:
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.getSources()
+.then(function(sources) {
+    console.log(sources);
+});
+```
+
+The response is an array of objects with `name` and `uri` properties:
+
+``` javascript
+[ { name: 'Sky News',
+    uri: 'http://www.bbc.co.uk/ontologies/bbc/SkyNews'
+  },
+  { name: 'BBC News',
+    uri: 'http://www.bbc.co.uk/ontologies/bbc/News'
+  } ...
+ ]
+ ```
+
+In future release it will be possible to use these URIs when calling the methods below.
 
 ### getConcepts()
 

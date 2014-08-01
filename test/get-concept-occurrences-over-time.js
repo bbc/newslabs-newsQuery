@@ -28,12 +28,11 @@ describe('Get the number of occurences of a concept today', function(){
     });
 });
 
-
 describe('Get the number of occurences of a concept over the last 30 days', function(){
     var response = { };
 
     beforeEach(function(done){
-        newsquery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Ukraine", moment().subtract('days', 30).format('YYYY-MM-DD'), moment().format('YYYY-MM-DD'))
+        newsquery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Ukraine", moment().subtract(30, 'days').format('YYYY-MM-DD'), moment().format('YYYY-MM-DD'))
         .then(function(concept) {
             response = concept;
             done();

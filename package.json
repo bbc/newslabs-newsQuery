@@ -6,7 +6,7 @@
   },
   "name": "newsquery",
   "description": "The newsQuery NPM package provides a simple interface to BBC News Labs APIs",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "main": "./lib/newsquery.js",
   "keywords": [
     "newsQuery",
@@ -23,7 +23,9 @@
   "dependencies": {
     "q": ">=1.0.0",
     "request": ">=2.33.0",
-    "moment": ">=2.8.0"
+    "moment": ">=2.8.0",
+    "node-cache": ">=1.0.0",
+    "crypto": ">=0.0.3"
   },
   "devDependencies" : {
       "mocha": ">=1.19.0"

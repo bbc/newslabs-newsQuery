@@ -1,6 +1,14 @@
 newsQuery
 =========
 
+**SERVICE OUTAGE 2014-09-05**
+
+The public facing BBC News Labs service that this API uses is currently unavalible. This is being investigated.
+
+Please note that this module will not work in the meantime.
+
+=========
+
 The newsQuery module provides easy-to-consume access to the BBC News Labs APIs.
 
 The APIs let you query a database of 40+ sources, including content from the BBC News but also other publications including Sky News, The Guardian, The Mirror, The Huffington Post and others.

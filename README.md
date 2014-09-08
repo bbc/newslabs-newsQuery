@@ -1,11 +1,9 @@
 newsQuery
 =========
 
-**SERVICE OUTAGE 2014-09-05**
+**SERVICE OUTAGE RESOLVED 2014-09-08**
 
-The public facing BBC News Labs service that this API uses is currently unavalible. This is being investigated.
-
-Please note that this module will not work in the meantime.
+The recent service outage on the APIs has now been resolved.
 
 =========
 

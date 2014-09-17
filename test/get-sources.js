@@ -1,7 +1,6 @@
 var assert = require("assert");
 var util = require("util");
-var config = require(__dirname+'/config.json');
-var newsquery = require(__dirname+'/../lib/newsquery')(config.bbcNewsLabs.apiKey);
+var newsquery = require(__dirname+'/../lib/newsquery')(process.env.NEWSQUERY_API_KEY);
 
 describe('Get sources the semantic API knows about', function(){
     var response;

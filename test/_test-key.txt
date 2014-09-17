@@ -1,0 +1,1 @@
+NEWSQUERY_API_KEY="9OHbOpZpVh9tQZBDjwTlTmsCF2Ce0yGQ" npm test

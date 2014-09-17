@@ -1,13 +1,12 @@
 var assert = require("assert");
 var util = require("util");
-var config = require(__dirname+'/config.json');
-var newsquery = require(__dirname+'/../lib/newsquery')(config.bbcNewsLabs.apiKey);
+var newsquery = require(__dirname+'/../lib/newsquery')(process.env.NEWSQUERY_API_KEY);
 
 describe('Get articles by concept using the semantic API', function(){
     // @fixme Allowing long for this query as sometimes it's slower
     // Even allowing for 10 seconds it still often fails if it isn't cached!
-    this.timeout(10000);
-    var response = { };
+    this.timeout(30000);
+    var response  = { };
     
     before(function(done){
         newsquery.getArticlesByConcept("http://dbpedia.org/resource/David_Cameron")

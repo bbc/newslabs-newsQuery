@@ -1,2 +1,3 @@
-test/config.json
+test/_test-key.txt
 .gitignore
+example.js

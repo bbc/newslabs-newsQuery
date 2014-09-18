@@ -374,9 +374,8 @@ You can also use a slightly different approach get articles similar to an articl
 var apiKey = '1234567890ABCDEF';
 var newsQuery = require('newsquery')(apiKey);
 newsQuery.getSimilarArticles("25663926")
-    .then(function(articles) {
-        console.log(articles);
-    });
+.then(function(articles) {
+    console.log(articles);
 });
 ```
 The article ID value usually the property labeled `id` or `cps_id` and is usually a string (although it can just be a series of digits, it should be treated as string).

@@ -391,9 +391,8 @@ This will return matching articles, with titles, descriptions, which organisatio
 var apiKey = '1234567890ABCDEF';
 var newsQuery = require('newsquery')(apiKey);
 newsQuery.searchArticles("Ukraine Russia")
-    .then(function(articles) {
-        console.log(articles);
-    });
+.then(function(articles) {
+  console.log(articles);
 });
 ```
 
@@ -403,9 +402,8 @@ You can optionally specify a date range if you are only intersted in articles pu
 var apiKey = '1234567890ABCDEF';
 var newsQuery = require('newsquery')(apiKey);
 newsQuery.searchArticles("Syria", "2014-09-01", "2014-09-07")
-    .then(function(articles) {
-        console.log(articles);
-    });
+.then(function(articles) {
+  console.log(articles);
 });
 ```
 

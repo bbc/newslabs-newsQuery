@@ -1,14 +1,12 @@
-#newsQuery - An interface to BBC News Labs APIs
+#newsQuery - For BBC News Labs APIs
 
 [![NPM version](https://badge.fury.io/js/newsquery.svg)](http://badge.fury.io/js/newsquery) [![Build Status](https://travis-ci.org/iaincollins/newsQuery.svg?branch=master)](https://travis-ci.org/iaincollins/newsQuery)
 
 ---
 
-The newsQuery module provides easy-to-consume access to the BBC News Labs APIs.
+The BBC News Labs APIs let you run queries on content from an increasing list of over 40 news sources which includes BBC News but also other publications like Sky News, The Guardian, The Mirror, The Independent, The Daily Record, The Huffington Post and others.
 
-The APIs let you query a database of 40+ sources, including content from the BBC News but also other publications including Sky News, The Guardian, The Mirror, The Huffington Post and others.
-
-The majority of our content is articles but we also have images, video and tweets from select sources.
+The majority of our content is in the form of article but thre are also images, video and tweets from select sources.
 
 The BBC News Labs API's are **experimental** and are cheifly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
 
@@ -372,7 +370,7 @@ Note: You can request dates up to a year apart. The bulk of the data goes back o
 
 You can also retreive articles using a keyword search.
 
-This will return matching articles, with titles, descriptions, which organisation published it, the URL for the article and a list of concepts the article was tagged with (including their URI's and the "confidence scoure" for each conept that the article has been tagged with).
+This will return matching articles, with titles, descriptions, which organisation published it, the URL for the article and a list of concepts the article was tagged with (including the URI's for each concept, what type of object the concept is and the "confidence scoure" for each conept that the article has been tagged with).
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
@@ -398,7 +396,7 @@ newsQuery.searchArticles("Syria", "2014-09-01", "2014-09-07")
 
 Only articles from the following sources are currently returned by this method:
 
- * NewsWeb (BBC Online)
+ * BBC News (displayed as "NewsWeb")
  * TheGuardian
  * TheMirror
  * TheIndependent

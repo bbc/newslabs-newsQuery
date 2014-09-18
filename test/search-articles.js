@@ -3,11 +3,11 @@ var util = require("util");
 var newsquery = require(__dirname+'/../lib/newsquery')(process.env.NEWSQUERY_API_KEY);
 
 describe('Search articles by keywords', function(){
-    this.timeout(10000);
+    this.timeout(20000);
     var response;
 
     before(function(done){
-        newsquery.searchArticles("Medical Innovation Bill")
+        newsquery.searchArticles("Ukraine Russia")
         .then(function(articles) {
             response = articles;
             done();

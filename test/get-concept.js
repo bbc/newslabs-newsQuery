@@ -3,6 +3,7 @@ var util = require("util");
 var newsquery = require(__dirname+'/../lib/newsquery')(process.env.NEWSQUERY_API_KEY);
 
 describe('Get a concept by URI using the semantic API', function(){
+    this.timeout(10000);
     var response = { };
     
     before(function(done){
@@ -37,6 +38,7 @@ describe('Get a concept by URI using the semantic API', function(){
 });
 
 describe('Get additional articles for a concept using the semantic API', function(){
+    this.timeout(10000);
     var response = { };
     
     before(function(done){

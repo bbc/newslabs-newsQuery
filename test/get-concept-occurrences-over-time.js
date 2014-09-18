@@ -28,6 +28,8 @@ describe('Get the number of occurences of a concept today', function(){
 });
 
 describe('Get the number of occurences of a concept over the last 30 days', function(){
+    this.timeout(10000);
+    
     var response = { };
 
     before(function(done){

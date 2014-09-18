@@ -1,4 +1,4 @@
-newsQuery
+#newsQuery - An interface to BBC News Labs APIs
 
 [![NPM version](https://badge.fury.io/js/newsquery.svg)](http://badge.fury.io/js/newsquery) [![Build Status](https://travis-ci.org/iaincollins/newsQuery.svg?branch=master)](https://travis-ci.org/iaincollins/newsQuery)
 

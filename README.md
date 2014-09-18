@@ -366,6 +366,21 @@ newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Russia",
 
 Note: You can request dates up to a year apart. The bulk of the data goes back over 6 months, we are still in the progress of adding sources.
 
+### getSimilarArticles()
+
+You can also use a slightly different approach get articles similar to an article you've already got an ID for.
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.getSimilarArticles("25663926")
+    .then(function(articles) {
+        console.log(articles);
+    });
+});
+```
+The article ID value usuallly the property labeled `id` or `cps_id` and is usually a string (although it can just be a series of digits, it should be treated as string).
+
 ### searchArticles()
 
 You can also retreive articles using a keyword search.
@@ -409,6 +424,7 @@ Only articles from the following sources are currently returned by this method:
 The API for this function is well developed but the client implimentation in this library is new and it uses a different backend endpoint from the other methods in this library (i.e. it hits different databases) but the data set is the same.
 
 This method does not yet support pagination, returning images or video, additional sources.
+
 
 ## Additional documentation
 

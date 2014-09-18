@@ -1,11 +1,8 @@
 newsQuery
-=========
 
-**SERVICE OUTAGE RESOLVED 2014-09-08**
+[![NPM version](https://badge.fury.io/js/newsquery.svg)](http://badge.fury.io/js/newsquery) [![Build Status](https://travis-ci.org/iaincollins/newsQuery.svg?branch=master)](https://travis-ci.org/iaincollins/newsQuery)
 
-The recent service outage on the APIs has now been resolved.
-
-=========
+---
 
 The newsQuery module provides easy-to-consume access to the BBC News Labs APIs.
 
@@ -371,11 +368,55 @@ newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Russia",
 
 Note: You can request dates up to a year apart. The bulk of the data goes back over 6 months, we are still in the progress of adding sources.
 
+### searchArticles()
+
+You can also retreive articles using a keyword search.
+
+This will return matching articles, with titles, descriptions, which organisation published it, the URL for the article and a list of concepts the article was tagged with (including their URI's and the "confidence scoure" for each conept that the article has been tagged with).
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.searchArticles("Ukraine Russia")
+    .then(function(articles) {
+        console.log(articles);
+    });
+});
+```
+
+You can optionally specify a date range if you are only intersted in articles published on a specific date:
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.searchArticles("Syria", "2014-09-01", "2014-09-07")
+    .then(function(articles) {
+        console.log(articles);
+    });
+});
+```
+
+Only articles from the following sources are currently returned by this method:
+
+ * NewsWeb (BBC Online)
+ * TheGuardian
+ * TheMirror
+ * TheIndependent
+ * ExpressStar
+ * TheHuffingtonPost
+ * DailyRecord
+ * SkyNews
+ * STV
+
+The API for this function is well developed but the client implimentation in this library is new and it uses a different backend endpoint from the other methods in this library (i.e. it hits different databases) but the data set is the same.
+
+This method does not yet support pagination, returning images or video, additional sources.
+
 ## Additional documentation
 
 You can find full information about how the raw BBC News Labs semantic APIs work on the #newsHACK site:
 
-The semantic News Labs API:
+The Semantic News Labs API:
 http://newshack.co.uk/newshack-ii/newslabs-apis/
 
 The News Juicer API:

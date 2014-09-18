@@ -6,9 +6,9 @@
 
 The BBC News Labs APIs let you run queries on content from an increasing list of over 40 news sources which includes BBC News but also other publications like Sky News, The Guardian, The Mirror, The Independent, The Daily Record, The Huffington Post and others.
 
-The majority of our content is in the form of article but thre are also images, video and tweets from select sources.
+The majority of our content is in the form of article but there are also images, video and tweets from select sources.
 
-The BBC News Labs API's are **experimental** and are cheifly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
+The BBC News Labs API's are **experimental** and are chiefly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
 
 **Important!** To use this library you must have a BBC News Labs API key (which is free to sign up for). See instructions below for how to do this.
 
@@ -52,7 +52,7 @@ The response is an array of objects with `name` and `uri` properties:
 
 ### getConcepts()
 
-You need to get a definative URI for a concept before you can search for articles that mention it.
+You need to get a definitive URI for a concept before you can search for articles that mention it.
 
 A concept is typically a person, place, organisation or theme (e.g. "law", "economics"). These correspond to entries in dbpedia, which uses an ontology derived from data in Wikipedia.
 
@@ -69,9 +69,9 @@ newsQuery.getConcepts("Rooney", 5)
 
 The response from getConcepts() is an array of concepts, each with a unique URI (and possibly an image).
 
-Note in the example below 'Wayne Rooney' is a SoccerPlayer, and SoccerPlayers are Atheletes, and Atheletess are People.
+Note in the example below 'Wayne Rooney' is a SoccerPlayer, and SoccerPlayers are Athletes, and Athletes are People.
 
-Mickey Rooney is classed as a Person, although it has not specifically identified him as an Actor - the granularity of the specificify may vary from concept to concept.
+Mickey Rooney is classed as a Person, although it has not specifically identified him as an Actor - the granularity of the specificity may vary from concept to concept.
 
 NB: 'Agent', which is as the last type for both, is simply a top level ontology class associated with all People and Organisations (and does not refer to being sports or acting agent). In this context an 'Agent' is a thing that acts in the world, for example, as distinct from something that is an Activity or a Place.
 
@@ -95,7 +95,7 @@ NB: 'Agent', which is as the last type for both, is simply a top level ontology 
 
 ### getConcept()
 
-If you have the definative URI for a concept you can use it's URI to request detailed information about a concept, such as a description and it's type.
+If you have the definitive URI for a concept you can use it's URI to request detailed information about a concept, such as a description and it's type.
 
 e.g. You can check the "type" field to see if it's categorized as a Person, Place, Organisation, etc (you can also check for more specific types, like SoccerPlayer or Company).
 
@@ -143,7 +143,7 @@ newsQuery.getCoOccuringConcepts("http://dbpedia.org/resource/Ukraine")
 });
 ```
 
-The response from getCoOccuringConcepts() is an array of concepts, returned in order of how many co-occurences there are between the concepts.
+The response from getCoOccuringConcepts() is an array of concepts, returned in order of how many co-occurrences there are between the concepts.
 
 i.e. how much times both concepts have been mentioned in the same article, tagged in one image, mentioned in a video, etc.
 
@@ -324,7 +324,7 @@ This is an example of slightly inconsistent behaviour between function calls - a
 
 ### getConceptOccurrencesOverTime()
 
-You can query how many occurences there are for a given concept between a series of dates, the startDate and endDate can be up to a year apart.
+You can query how many occurrences there are for a given concept between a series of dates, the startDate and endDate can be up to a year apart.
 
 If you don't specify a startDate or an endDate (both should be strings in the form 'YYYY-MM-DD') then the current date will be used for either value.
 
@@ -347,7 +347,7 @@ The response from getConceptOccurrencesOverTime() is an array of objects with 'd
   { date: '2014-05-28', value: 9 } ]
 ```
 
-If you want to filter by a specific source, you can specify a source URI - from the list returned by `getSources()` - as an optional 4th paramter.
+If you want to filter by a specific source, you can specify a source URI - from the list returned by `getSources()` - as an optional 4th parameter.
 
 The below example shows how to get the number of articles related to Russia that appeared in The Guardian in the last 7 days:
 
@@ -379,13 +379,13 @@ newsQuery.getSimilarArticles("25663926")
     });
 });
 ```
-The article ID value usuallly the property labeled `id` or `cps_id` and is usually a string (although it can just be a series of digits, it should be treated as string).
+The article ID value usually the property labeled `id` or `cps_id` and is usually a string (although it can just be a series of digits, it should be treated as string).
 
 ### searchArticles()
 
-You can also retreive articles using a keyword search.
+You can also retrieve articles using a keyword search.
 
-This will return matching articles, with titles, descriptions, which organisation published it, the URL for the article and a list of concepts the article was tagged with (including the URI's for each concept, what type of object the concept is and the "confidence scoure" for each conept that the article has been tagged with).
+This will return matching articles, with titles, descriptions, which organisation published it, the URL for the article and a list of concepts the article was tagged with (including the URI's for each concept, what type of object the concept is and the "confidence score" for each concept that the article has been tagged with).
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
@@ -396,7 +396,7 @@ newsQuery.searchArticles("Ukraine Russia")
 });
 ```
 
-You can optionally specify a date range if you are only intersted in articles published on a specific date:
+You can optionally specify a date range if you are only interested in articles published on a specific date:
 
 ``` javascript
 var apiKey = '1234567890ABCDEF';
@@ -419,7 +419,7 @@ Only articles from the following sources are currently returned by this method:
  * SkyNews
  * STV
 
-The API for this function is well developed but the client implimentation in this library is new and it uses a different backend endpoint from the other methods in this library (i.e. it hits different databases) but the data set is the same.
+The API for this function is well developed but the client implementation in this library is new and it uses a different backend endpoint from the other methods in this library (i.e. it hits different databases) but the data set is the same.
 
 This method does not yet support pagination, returning images or video, additional sources.
 

@@ -5,8 +5,8 @@
     "url": "http://bbcnewslabs.co.uk"
   },
   "name": "newsquery",
-  "description": "The newsQuery NPM package provides a library to interact with the BBC News Labs APIs",
-  "version": "0.9.6",
+  "description": "The newsQuery NPM package provides a library to interact with the BBC News Labs Juicer API",
+  "version": "0.9.8",
   "main": "./lib/newsquery.js",
   "keywords": [
     "newsQuery",

@@ -1,12 +1,14 @@
-#newsQuery - For BBC News Labs APIs
+#newsQuery - Access the BBC News Labs Juicer API
 
 [![NPM version](https://badge.fury.io/js/newsquery.svg)](http://badge.fury.io/js/newsquery) [![Build Status](https://travis-ci.org/BBC-News-Labs/newsQuery.svg?branch=master)](https://travis-ci.org/BBC-News-Labs/newsQuery)
 
-The BBC News Labs APIs let you run queries on content from an increasing list of over 40 news sources which includes BBC News but also other publications like Sky News, The Guardian, The Mirror, The Independent, The Daily Record, The Huffington Post and others media, including BBC News and BBC Parliament channels and MP's Twitter accounts.
+The BBC News Labs Juicer API let you run queries on content from an increasing list of over 40 news sources which includes BBC News but also other publications like Sky News, The Guardian, The Mirror, The Independent, The Daily Record, The Huffington Post and other media. It also includes content from other sources, including the BBC News and BBC Parliament TV channels and MP's Twitter accounts. 
 
-The majority of our content is in the form of article but there are also images, video and tweets from select sources.
+The majority of content is in the form of articles from news organisations but there are also images, video and tweets from select sources.
 
-The BBC News Labs API's are **experimental** and are chiefly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
+Data about content from other sources - including the BBC News video and image archives - is also held in the Juicer but is not be avalible outside of the BBC network. This content will not normally be surfaced when using this library.
+
+The BBC News Labs Juicer API is are **experimental** and are chiefly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
 
 **Important!** To use this library you must have a BBC News Labs API key (which is free to sign up for). See instructions below for how to do this.
 
@@ -18,7 +20,7 @@ http://dbpedia-spotlight.github.io/demo/
 
 The tagging is fully automated - which is is why it's not 100% accurate - although there is an interface to add and remove tags to correct errors.
 
-Note this is not a production system or an offical BBC production service; it's an experimental platform for research and development - availability suitability for any particular purpose is not guaranteed.
+The Juicer is not a production system or an offical BBC production service; it's an experimental platform for research and development - availability suitability for any particular purpose is not guaranteed.
 
 ### How to get an API key
 
@@ -445,7 +447,7 @@ Note: You can request dates up to a year apart. The bulk of the data goes back o
 
 ## Additional documentation
 
-You can find full information about how the raw BBC News Labs semantic APIs work on the #newsHACK site:
+You can find full information about how the raw BBC News Labs Juicer APIs work on the #newsHACK site:
 
 The Semantic News Labs API:
 http://newshack.co.uk/newshack-ii/newslabs-apis/

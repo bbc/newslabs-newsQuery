@@ -1,6 +1,6 @@
 #newsQuery - For BBC News Labs APIs
 
-[![NPM version](https://badge.fury.io/js/newsquery.svg)](http://badge.fury.io/js/newsquery) [![Build Status](https://travis-ci.org/iaincollins/newsQuery.svg?branch=master)](https://travis-ci.org/iaincollins/newsQuery)
+[![NPM version](https://badge.fury.io/js/newsquery.svg)](http://badge.fury.io/js/newsquery) [![Build Status](https://travis-ci.org/BBC-News-Labs/newsQuery.svg?branch=master)](https://travis-ci.org/BBC-News-Labs/newsQuery)
 
 The BBC News Labs APIs let you run queries on content from an increasing list of over 40 news sources which includes BBC News but also other publications like Sky News, The Guardian, The Mirror, The Independent, The Daily Record, The Huffington Post and others media, including BBC News and BBC Parliament channels and MP's Twitter accounts.
 

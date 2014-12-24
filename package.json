@@ -1,12 +1,12 @@
 {
   "author": {
     "name": "Iain Collins",
-    "email": "me@iaincollins.com",
-    "url": "http://iaincollins.com"
+    "email": "iain.collins@bbc.co.uk",
+    "url": "http://bbcnewslabs.co.uk"
   },
   "name": "newsquery",
   "description": "The newsQuery NPM package provides a library to interact with the BBC News Labs APIs",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "main": "./lib/newsquery.js",
   "keywords": [
     "newsQuery",
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/iaincollins/newsQuery.git"
+    "url": "git://github.com/BBC-News-Labs/newsQuery.git"
   },
   "dependencies": {
     "q": ">=1.0.0",

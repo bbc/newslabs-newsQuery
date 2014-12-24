@@ -2,15 +2,23 @@
 
 [![NPM version](https://badge.fury.io/js/newsquery.svg)](http://badge.fury.io/js/newsquery) [![Build Status](https://travis-ci.org/iaincollins/newsQuery.svg?branch=master)](https://travis-ci.org/iaincollins/newsQuery)
 
----
-
-The BBC News Labs APIs let you run queries on content from an increasing list of over 40 news sources which includes BBC News but also other publications like Sky News, The Guardian, The Mirror, The Independent, The Daily Record, The Huffington Post and others.
+The BBC News Labs APIs let you run queries on content from an increasing list of over 40 news sources which includes BBC News but also other publications like Sky News, The Guardian, The Mirror, The Independent, The Daily Record, The Huffington Post and others media, including BBC News and BBC Parliament channels and MP's Twitter accounts.
 
 The majority of our content is in the form of article but there are also images, video and tweets from select sources.
 
 The BBC News Labs API's are **experimental** and are chiefly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
 
 **Important!** To use this library you must have a BBC News Labs API key (which is free to sign up for). See instructions below for how to do this.
+
+The API's exposed by this library include an interface to an Elastic Search powered database and our Triplestore Semantic Data platform.
+
+We get our Linked Data concepts (aka tags) from DBPedia.org, which in turn is derived from Wikipedia data. You can see an example of how this entity extraction works at:
+
+http://dbpedia-spotlight.github.io/demo/
+
+The tagging is fully automated - which is is why it's not 100% accurate - although there is an interface to add and remove tags to correct errors.
+
+Note this is not a production system or an offical BBC production service; it's an experimental platform for research and development - availability suitability for any particular purpose is not guaranteed.
 
 ### How to get an API key
 
@@ -50,11 +58,80 @@ The response is an array of objects with `name` and `uri` properties:
  ]
  ```
 
+### searchArticles()
+
+A simple query to get started is to search articles using a keyword search.
+
+This doesn't actually invoke the BBC News Labs Linked Data platform directly (instead it triggers calls to an Elastic Search powered endpoint), but does return articles along with entities which you can use in Linked Data queries.
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.searchArticles("Ukraine Russia")
+.then(function(articles) {
+  console.log(articles);
+});
+```
+
+The response for a matching query will return  articles, with titles, descriptions, the organisation that published it, the URL for the article and a list of concepts the article was tagged with (including the URI's for each concept, what type of object the concept is and the "confidence score" for each concept that the article has been tagged with).
+
+You can optionally specify a date range if you are only interested in articles published on or around specific date:
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.searchArticles("Syria", "2014-09-01", "2014-09-07")
+.then(function(articles) {
+  console.log(articles);
+});
+```
+
+You can use the ID for the article and one of the additional queries API calls documented to pull back full data (tags, summary, etc.) for the article.
+
+Note that unlike the other API endpoints only text articles (not images or video) from the following sources are currently returned by this method:
+
+ * BBC News (currently displayed as "NewsWeb")
+ * The Guardian
+ * The Mirror
+ * The Independent
+ * Express & Star
+ * The Huffington Post
+ * Daily Record
+ * Sky News
+ * STV
+
+### getSimilarArticles()
+
+If you have an article ID from any of the searches or calls below you can search for other, similar article using getSimilarArticles().
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.getSimilarArticles("25663926")
+.then(function(articles) {
+    console.log(articles);
+});
+```
+The article ID value usually the property labeled `id` or `cps_id` and is a string (in some cases it might look like an integer but that's not true for all cases, so it should be treated like a string).
+
+### getSimilarArticlesFromText()
+
+If you have an article from an external source you can search for articles from other publications that are similar to the article you already have):
+
+``` javascript
+var apiKey = '1234567890ABCDEF';
+var newsQuery = require('newsquery')(apiKey);
+newsQuery.getSimilarArticlesFromText("This is a long body of text...")
+.then(function(articles) {
+    console.log(articles);
+});
+```
+
 ### getConcepts()
 
-You need to get a definitive URI for a concept before you can search for articles that mention it.
+You need to get a definitive URI for a concept before you can search the BBC News Labs Linked Data platform for articles that mention that concept.
 
-A concept is typically a person, place, organisation or theme (e.g. "law", "economics"). These correspond to entries in dbpedia, which uses an ontology derived from data in Wikipedia.
+A concept is typically a person, place, organisation or theme (e.g. "law", "economics", "gravity", "policy"). These correspond to entries in dbpedia, which uses an ontology derived from data in Wikipedia.
 
 An example that returns the first 5 concepts matching the term "Rooney":
 
@@ -73,7 +150,7 @@ Note in the example below 'Wayne Rooney' is a SoccerPlayer, and SoccerPlayers ar
 
 Mickey Rooney is classed as a Person, although it has not specifically identified him as an Actor - the granularity of the specificity may vary from concept to concept.
 
-NB: 'Agent', which is as the last type for both, is simply a top level ontology class associated with all People and Organisations (and does not refer to being sports or acting agent). In this context an 'Agent' is a thing that acts in the world, for example, as distinct from something that is an Activity or a Place.
+NB: An 'Agent', which is as the last type for both, is simply a top level ontology class associated with all People and Organisations (and does not refer to an individial as being sports or acting agent). In this context an 'Agent' is a thing that acts in the world, for example, as distinct from something that is an Activity or a Place.
 
 ``` javascript
 [ { name: 'Wayne Rooney',
@@ -365,63 +442,6 @@ newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Russia",
 ```
 
 Note: You can request dates up to a year apart. The bulk of the data goes back over 6 months, we are still in the progress of adding sources.
-
-### getSimilarArticles()
-
-You can also use a slightly different approach get articles similar to an article you've already got an ID for.
-
-``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
-newsQuery.getSimilarArticles("25663926")
-.then(function(articles) {
-    console.log(articles);
-});
-```
-The article ID value usually the property labeled `id` or `cps_id` and is usually a string (although it can just be a series of digits, it should be treated as string).
-
-### searchArticles()
-
-You can also retrieve articles using a keyword search.
-
-This will return matching articles, with titles, descriptions, which organisation published it, the URL for the article and a list of concepts the article was tagged with (including the URI's for each concept, what type of object the concept is and the "confidence score" for each concept that the article has been tagged with).
-
-``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
-newsQuery.searchArticles("Ukraine Russia")
-.then(function(articles) {
-  console.log(articles);
-});
-```
-
-You can optionally specify a date range if you are only interested in articles published on a specific date:
-
-``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
-newsQuery.searchArticles("Syria", "2014-09-01", "2014-09-07")
-.then(function(articles) {
-  console.log(articles);
-});
-```
-
-Only articles from the following sources are currently returned by this method:
-
- * BBC News (displayed as "NewsWeb")
- * TheGuardian
- * TheMirror
- * TheIndependent
- * ExpressStar
- * TheHuffingtonPost
- * DailyRecord
- * SkyNews
- * STV
-
-The API for this function is well developed but the client implementation in this library is new and it uses a different backend endpoint from the other methods in this library (i.e. it hits different databases) but the data set is the same.
-
-This method does not yet support pagination, returning images or video, additional sources.
-
 
 ## Additional documentation
 

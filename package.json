@@ -6,7 +6,7 @@
   },
   "name": "newsquery",
   "description": "The newsQuery NPM package provides a library to interact with the BBC News Labs Juicer API",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "main": "./lib/newsquery.js",
   "keywords": [
     "newsQuery",

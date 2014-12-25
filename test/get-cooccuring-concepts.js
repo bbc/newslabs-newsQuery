@@ -5,7 +5,7 @@ var newsquery = require(__dirname+'/../lib/newsquery')(process.env.NEWSQUERY_API
 describe('Get related concepts URI using the semantic API', function(){
     // @fixme Allowing long for this query as sometimes it's slow
     // Even allowing for 10 seconds it still often fails if it isn't cached!
-    this.timeout(10000);
+    this.timeout(20000);
     var response = { };
     
     before(function(done){

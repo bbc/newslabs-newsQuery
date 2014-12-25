@@ -456,3 +456,15 @@ The News Juicer API:
 http://newshack.co.uk/newshack-ii/juicer-apis/
 
 Note that the formats of the responses may differ if using the raw APIs, this module attempts to simplify them to make them easier to consume.
+
+## Contributing
+
+Pull requests, feature requests and bug reports are welcome!
+
+### Running tests
+
+To run tests you can `npm test` but you'll need to set the *NEWSQUERY_API_KEY* environment variable to a valid API key.
+
+Example of how to invoke tests:
+
+    > NEWSQUERY_API_KEY="insert-your-api-key-here" npm test

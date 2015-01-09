@@ -1,37 +1,28 @@
-#newsQuery - Access the BBC News Labs Juicer API
+#newsQuery - API for the BBC News Labs Juicer 
 
 [![NPM version](https://badge.fury.io/js/newsquery.svg)](http://badge.fury.io/js/newsquery) [![Build Status](https://travis-ci.org/BBC-News-Labs/newsQuery.svg?branch=master)](https://travis-ci.org/BBC-News-Labs/newsQuery)
 
-The BBC News Labs Juicer API let you run queries on content from an increasing list of over 40 news sources which includes BBC News but also other publications like Sky News, The Guardian, The Mirror, The Independent, The Daily Record, The Huffington Post and other media. It also includes content from other sources, including the BBC News and BBC Parliament TV channels and MP's Twitter accounts. 
+The BBC News Labs Juicer API let you run queries on content from an increasing list of over news sources which includes BBC News but also other publications like Sky News, The Guardian, The Mirror, The Independent, The Daily Record, The Huffington Post and other media. It also includes content from other sources, including the BBC News and BBC Parliament TV channels and MP's Twitter accounts. 
 
 The majority of content is in the form of articles from news organisations but there are also images, video and tweets from select sources.
 
 Data about content from other sources - including the BBC News video and image archives - is also held in the Juicer but is not be avalible outside of the BBC network. This content will not normally be surfaced when using this library.
 
-The BBC News Labs Juicer API is are **experimental** and are chiefly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
-
-**Important!** To use this library you must have a BBC News Labs API key (which is free to sign up for). See instructions below for how to do this.
-
-The API's exposed by this library include an interface to an Elastic Search powered database and our Triplestore Semantic Data platform.
+The APIs exposed by this library include an interface to an Elastic Search powered database and our Triplestore Semantic Data platform.
 
 We get our Linked Data concepts (aka tags) from DBPedia.org, which in turn is derived from Wikipedia data. You can see an example of how this entity extraction works at:
 
 http://dbpedia-spotlight.github.io/demo/
 
-The tagging is fully automated - which is is why it's not 100% accurate - although there is an interface to add and remove tags to correct errors.
+The tagging is fully automated and consequently isn't 100% accurate.
 
-The Juicer is not a production system or an offical BBC production service; it's an experimental platform for research and development - availability suitability for any particular purpose is not guaranteed.
+### Disclaimer
 
-### How to get an API key
+The Juicer is not a production system or an offical BBC production service; it's an experimental platform for research and development - availability or suitability for any particular purpose is not guaranteed.
 
-You can obtain an API key from the BBC Developer Portal
-http://bbc.apiportal.apigee.com
+This API may be suspended, changed or disabled without prior notice at any time. The API evolves and changes over time and should not be considered stable!
 
-Registration is free and immediate, you will receive an automated email when you sign up, which contains a link to activate your account. Check your junk mail folder if you can't find it.
-
-1. After registering, create a new application.
-2. Select both the "bbcrd-newslabs-apis-product" and "bbcrd-juicer-apis-product" APIs for your application.
-3. Your API key will be listed as the "Consumer Key" for your application.
+The BBC News Labs Juicer API is are **experimental** and are chiefly intended for use by R&D teams in news organisations and universities. If you'd like to more more or have any feedback about them, please get in touch with @BBC_News_Labs via Twitter.
 
 ## Usage with examples
 
@@ -40,8 +31,7 @@ Registration is free and immediate, you will receive an automated email when you
 You can get a list of sources the Semantic API knows about with `getSources()`:
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
+var newsQuery = require('newsquery');
 newsQuery.getSources()
 .then(function(sources) {
     console.log(sources);
@@ -67,8 +57,6 @@ A simple query to get started is to search articles using a keyword search.
 This doesn't actually invoke the BBC News Labs Linked Data platform directly (instead it triggers calls to an Elastic Search powered endpoint), but does return articles along with entities which you can use in Linked Data queries.
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
 newsQuery.searchArticles("Ukraine Russia")
 .then(function(articles) {
   console.log(articles);
@@ -80,8 +68,6 @@ The response for a matching query will return  articles, with titles, descriptio
 You can optionally specify a date range if you are only interested in articles published on or around specific date:
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
 newsQuery.searchArticles("Syria", "2014-09-01", "2014-09-07")
 .then(function(articles) {
   console.log(articles);
@@ -107,8 +93,6 @@ Note that unlike the other API endpoints only text articles (not images or video
 If you have an article ID from any of the searches or calls below you can search for other, similar article using getSimilarArticles().
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
 newsQuery.getSimilarArticles("25663926")
 .then(function(articles) {
     console.log(articles);
@@ -121,8 +105,6 @@ The article ID value usually the property labeled `id` or `cps_id` and is a stri
 If you have an article from an external source you can search for articles from other publications that are similar to the article you already have):
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
 newsQuery.getSimilarArticlesFromText("This is a long body of text...")
 .then(function(articles) {
     console.log(articles);
@@ -138,8 +120,6 @@ A concept is typically a person, place, organisation or theme (e.g. "law", "econ
 An example that returns the first 5 concepts matching the term "Rooney":
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
 newsQuery.getConcepts("Rooney", 5)
 .then(function(concepts) {
     console.log(concepts);
@@ -181,8 +161,6 @@ e.g. You can check the "type" field to see if it's categorized as a Person, Plac
 Note that calling getConcept() explicitly on a URI may return more specific type information than is returned along with a concept in other calls, such as getArticlesByConcept().
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
 newsQuery.getConcept("http://dbpedia.org/resource/David_Cameron", 1)
 .then(function(concept) {
     console.log(concept);
@@ -214,8 +192,6 @@ The response is a single object, with a description and additional metadata, typ
 You can fetch concepts that - by being linked through news articles - are linked to a given concept. For example, to get concepts related to "Ukraine":
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
 newsQuery.getCoOccuringConcepts("http://dbpedia.org/resource/Ukraine")
 .then(function(concepts) {
     console.log(concepts);
@@ -245,8 +221,6 @@ You can also optionally specify:
 For example the following query would return the top 10 people Sky News mentioned in stories that related to the Ukraine.
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
 newsQuery.getCoOccuringConcepts("http://dbpedia.org/resource/Ukraine",
                                 10,
                                 "http://www.bbc.co.uk/ontologies/bbc/Person"
@@ -261,8 +235,6 @@ newsQuery.getCoOccuringConcepts("http://dbpedia.org/resource/Ukraine",
 Once you have the URI for a concept, you can use it to find news articles mentioning it. You can specify a single concept URI or an array of URIs.
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
 newsQuery.getArticlesByConcept(["http://dbpedia.org/resource/David_Cameron"], 5)
 .then(function(articles) {
     console.log(articles);
@@ -408,8 +380,6 @@ You can query how many occurrences there are for a given concept between a serie
 If you don't specify a startDate or an endDate (both should be strings in the form 'YYYY-MM-DD') then the current date will be used for either value.
 
 ``` javascript
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
 newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Ukraine", "2014-05-24", "2014-05-28")
 .then(function(occurrences) {
     console.log(occurrences);
@@ -432,9 +402,9 @@ The below example shows how to get the number of articles related to Russia that
 
 ``` javascript
 var moment = require("moment");
-var apiKey = '1234567890ABCDEF';
-var newsQuery = require('newsquery')(apiKey);
-newsQuery.getConceptOccurrencesOverTime("http://dbpedia.org/resource/Russia",
+
+newsQuery.getConceptOccurrencesOverTime(
+    "http://dbpedia.org/resource/Russia",
     moment().subtract(7,'days').format('YYYY-MM-DD'),
     moment().format('YYYY-MM-DD'),
     "http://www.bbc.co.uk/ontologies/bbc/TheGuardian")
@@ -463,8 +433,6 @@ Pull requests, feature requests and bug reports are welcome!
 
 ### Running tests
 
-To run tests you can `npm test` but you'll need to set the *NEWSQUERY_API_KEY* environment variable to a valid API key.
+To run tests just run `npm test`:
 
-Example of how to invoke tests:
-
-    > NEWSQUERY_API_KEY="insert-your-api-key-here" npm test
+    > npm test

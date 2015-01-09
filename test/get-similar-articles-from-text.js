@@ -1,7 +1,7 @@
 var assert = require("assert");
 var util = require("util");
 var moment = require("moment");
-var newsquery = require(__dirname+'/../lib/newsquery')(process.env.NEWSQUERY_API_KEY);
+var newsquery = require(__dirname+'/../lib/newsquery');
 
 describe('Get articles similar to supplied text', function(){
     this.timeout(20000);

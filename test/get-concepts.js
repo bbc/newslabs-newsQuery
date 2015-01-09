@@ -1,6 +1,6 @@
 var assert = require("assert");
 var util = require("util");
-var newsquery = require(__dirname+'/../lib/newsquery')(process.env.NEWSQUERY_API_KEY);
+var newsquery = require(__dirname+'/../lib/newsquery');
 
 describe('Find concepts by name using the semantic API', function(){
     var limit = 5;

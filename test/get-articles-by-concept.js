@@ -1,6 +1,6 @@
 var assert = require("assert");
 var util = require("util");
-var newsquery = require(__dirname+'/../lib/newsquery')(process.env.NEWSQUERY_API_KEY);
+var newsquery = require(__dirname+'/../lib/newsquery');
 
 describe('Get articles by concept using the semantic API', function(){
     // @fixme Allowing long for this query as sometimes it's slower
